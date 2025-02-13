@@ -1,12 +1,16 @@
-.header{
+.header {
   height: 80px;
   background-color: #F6F5FB;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: solid 2px rgb(187, 184, 184);
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 1000;  
 }
-
 .logo-name {
   font-family: "DM Sans", serif;
   font-optical-sizing: auto;

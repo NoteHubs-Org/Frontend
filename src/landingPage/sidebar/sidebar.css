@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+.sidebar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: calc(100vh - 80px);
+  background-color: #fff;
+  transition: width 0.3s ease;
+  width: 60px;
+  z-index: 100;
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+}
+
+.sidebar.expanded {
+  width: 250px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  margin: 20px 0;
+  padding: 0 18px;
+}
+.add-doc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3092fa;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.add-icon{
+  color: white;
+}
+.add-doc:hover{
+  background-color: #307dfa;
+}
+.add-p{
+  display: inline;
+  margin: 0;
+}
+
+.nav {
+  margin: 20px 9px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav_link, .divv {
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav_link:hover {
+  background-color: rgba(195, 232, 254, 0.473);
+}
+
+.nav_link.active {
+  color: #000;
+  background-color: rgba(195, 232, 254, 0.873);
+}
+
+.nav_icon, .add-icon{
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.nav_name {
+  font-size: 16px;
+  white-space: nowrap;
+  margin-left: 16px;
+}
