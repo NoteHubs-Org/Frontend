@@ -1,0 +1,93 @@
+.header{
+  height: 80px;
+  background-color: #F6F5FB;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 2px rgb(187, 184, 184);
+}
+
+.logo-name {
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-size: 30px;
+  font-style: normal;
+  margin-left: 30px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 25px;
+  border: solid 1px rgb(227, 226, 226);
+  width: 400px;
+  transition: 0.2s ease;
+}
+.search-container:hover{
+  border: solid 2px rgb(198, 197, 197);
+  transform: scale(1.01); 
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: transparent;
+}
+
+.header .header-right{
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+.div-profile{
+  display: flex;
+  align-items: center;
+}
+
+.header .header-icon{
+  font-size: 30px;
+  color: #666;
+  padding: 6px;
+  border-radius: 50%;
+  transition: 0.4s ease;
+}
+.header .header-icon:hover{
+  background-color: #eaeaea
+}
+.header .header-icon:active{
+  background-color: #d4d4d4
+}
+.profile-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+.profile-image {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.default-icon {
+  font-size: 50px; /* Size of the default icon */
+  color: #666;
+}
