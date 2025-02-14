@@ -1,9 +1,11 @@
 import React from 'react'
-import Menu from './Menu'
+import Sidebar from './sidebar/Sidebar'
 
 const LandPage = () => {
   return (
-    <Menu />
+    <>
+      <Sidebar className='sidebar' />
+    </>
   )
 }
 
