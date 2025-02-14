@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CircularProfile = ({ imageUrl }) => {
+const CircularProfile = ({ imageUrl, size=50 }) => {
   return (
-    <div className="profile-container">
+    <div className="profile-container" style={{ width:`${size}px`, height:`${size}px`}}>
       {imageUrl ? (
         <img src={imageUrl} alt="Profile" className="profile-image" />
       ) : (
