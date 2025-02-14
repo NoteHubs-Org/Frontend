@@ -3,7 +3,9 @@ import Sidebar from './sidebar/Sidebar'
 
 const LandPage = () => {
   return (
-    <Sidebar className='sidebar' />
+    <>
+      <Sidebar className='sidebar' />
+    </>
   )
 }
 
