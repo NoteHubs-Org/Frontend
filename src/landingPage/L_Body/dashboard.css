@@ -1,0 +1,63 @@
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+/* Feature Cards */
+.feature-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature Icons */
+.feature-icon {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+/* Soft Pastel Color Variations */
+.chatpdf {
+  background-color: #ffe6d5; /* Soft Orange */
+}
+
+.brainy {
+  background-color: #eae4ff; /* Light Purple */
+}
+
+.study-hubs {
+  background-color: #eaffda; /* Light Green */
+}
+
+/* Text Styling */
+h4 {
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .feature-card {
+    width: 90%;
+  }
+}
