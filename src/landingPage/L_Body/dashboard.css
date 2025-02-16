@@ -61,3 +61,78 @@ p {
     width: 90%;
   }
 }
+
+.recent-mess {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.recent-mess h4 {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.recent-mess .rec-div {
+  background-color: #E3F2FD; /* Light Blue */
+  width: 94%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.recent-mess .rec-div div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-mess .rec-div div p {
+  width: 400px;
+  font-size: 16px;
+  color: #333; /* Dark Gray for readability */
+}
+
+.recent-mess .rec-div div p span {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1A73E8; /* Google Blue for emphasis */
+}
+
+.image-content img {
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  object-fit: cover;
+}
+
+.chats-btn {
+  max-width: 150px;
+  border-radius: 20px;
+  border: none;
+  height: 40px;
+  margin: 10px;
+  margin-top: 0;
+  font-size: 16px;
+  background-color: #1A73E8; /* Blue Button */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chats-btn:hover {
+  background-color: #135AB5; /* Darker Blue */
+}
+
+.btn-icon {
+  font-weight: bold;
+}

@@ -1,0 +1,140 @@
+.container {
+  background: white;
+  width: 80%;
+  max-width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Header */
+.headerr {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #ff4d6d;
+}
+
+/* Upload Options */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option {
+  background: #f1f1f1;
+  padding: 15px;
+  color: black;
+  border-radius: 8px;
+  border: solid 0.51px rgb(197, 195, 195);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background: #ffe1e6;
+  color: white;
+  border: none;
+}
+
+.option .title,
+.option .descrition {
+  color: rgb(0, 0, 0);
+}
+.option:hover .icon,
+.option:hover .title,
+.option:hover .description {
+  color: rgb(0, 0, 0);
+}
+
+.icon {
+  font-size: 30px;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #ff4d6d;
+}
+
+.description {
+  font-size: 12px;
+  color: gray;
+}
+
+/* Upload Box */
+.upload-box {
+  background: #ffe6eb;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.upload-box:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.upload-icon {
+  width: 50px;
+}
+
+.upload-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.upload-btn {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: #e63956;
+  transform: scale(1.05);
+}
+
+.upload-info {
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+}
+
+/* Disabled Button */
+.disabled-btn {
+  width: 100%;
+  background: gray;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: not-allowed;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.disabled-btn:hover {
+  background: #a0a0a0;
+}
