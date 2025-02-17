@@ -1,0 +1,124 @@
+.footer {
+  background: #f8f9fa;
+  padding: 40px 5%;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo h2 {
+  color: #333;
+  font-size: 24px;
+}
+
+.footer-logo p {
+  color: #666;
+  margin: 5px 0 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.app-buttons img {
+  width: 140px;
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.social-icons {
+  font-size: 20px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.language-location button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.footer a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #007bff; /* Change to blue on hover */
+  text-decoration: underline;
+  transform: translateX(5px);
+}
+
+.social-icons svg {
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icons svg:hover {
+  color: #007bff; /* Social icons change color */
+  transform: scale(1.2); /* Slight zoom effect */
+}
+
+.app-buttons img {
+  transition: transform 0.3s ease;
+}
+
+.app-buttons img:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+.language-location button {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.language-location button:hover {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.footer-bottom p {
+  transition: opacity 0.3s ease;
+}
+
+.footer-bottom p:hover {
+  opacity: 0.7;
+}

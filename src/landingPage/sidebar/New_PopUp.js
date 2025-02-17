@@ -3,8 +3,11 @@ import { BsCloudArrowUpFill } from "react-icons/bs";
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { IoIosPaper } from "react-icons/io";
 import './sidebar.css'
+import { useNavigate } from 'react-router-dom';
 
 const New_PopUp = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className='div-row upload-cloud'>
@@ -21,7 +24,7 @@ const New_PopUp = () => {
           <h5>Ask a study question and get answer in seconds</h5>
         </div>
       </div>
-      <div className='div-row'>
+      <div className='div-row' onClick={() => navigate("/summarize")}>
         <IoIosPaper className='popup-icon notes-icon' />
         <div>
           <h4>Summarise Documents</h4>
