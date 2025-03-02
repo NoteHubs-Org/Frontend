@@ -3,6 +3,7 @@ import './App.css';
 import Header from './header/Header';
 import LandPage from './landingPage/LandPage';
 import Footer from './footer/Footer';
+import './footer/footer.css';
 import { BrowserRouter } from 'react-router-dom'; 
 
 function App() {
