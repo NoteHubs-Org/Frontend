@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import New_PopUp from './New_PopUp';
 import { BiMenu, BiGridAlt, BiBarChartAlt2, BiLogOut } from "react-icons/bi";
 import { IoAdd, IoLibraryOutline } from "react-icons/io5";
 import { MdOutlineGroups2 } from "react-icons/md";
@@ -7,12 +8,19 @@ import { HiChevronLeft } from "react-icons/hi2";
 import "./sidebar.css";
 
 const Sidebar = ({ isExpanded, toggleSidebar }) => {
-  const sidebarRef = useRef(null); // Ref to track the sidebar element
+  const [isHidden, setIsHidden] = useState(false);
+
+  const toggleHidden = () => {
+    setIsHidden(!isHidden)
+  }
+
+  const sidebarRef = useRef(null); 
 
   useEffect(() => {
+
     const handleClickOutside = (event) => {
       if (isExpanded && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        toggleSidebar(); // Close sidebar if open and clicked outside
+        toggleSidebar(); 
       }
     };
 
@@ -21,7 +29,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isExpanded, toggleSidebar]); // Only run when sidebar is open
+  }, [isExpanded, toggleSidebar]); 
 
   return (
     <div className={`sidebar ${isExpanded ? "expanded" : ""}`} ref={sidebarRef}>
@@ -35,10 +43,15 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
 
       {/* Sidebar Content */}
       <nav className="nav">
-        <div className="add-doc">
-          <IoAdd className="nav_icon add-icon" />
-          {isExpanded && <p className="add-p">Add New Doc</p>}
-        </div>
+      <div className='add-doc' onClick={toggleHidden}>
+            <IoAdd className='nav_icon add-icon'/>
+            {isExpanded && 
+              <>
+                <p className='add-p'>Add New Doc</p>
+                <div  className={(isExpanded && isHidden) ? 'popup-div' : 'hide-popup'} ><New_PopUp /></div>
+              </>
+            }
+          </div>
 
         {/* Navigation Links */}
         <div className="nav_list">

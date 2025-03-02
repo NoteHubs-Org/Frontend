@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 15px;
   padding: 15px;
+  width: 100%;
 }
 
 /* Feature Cards */
@@ -55,13 +56,6 @@ p {
   color: #666;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .feature-card {
-    width: 90%;
-  }
-}
-
 .recent-mess {
   display: flex;
   flex-direction: column;
@@ -77,7 +71,7 @@ p {
 
 .recent-mess .rec-div {
   background-color: #E3F2FD; /* Light Blue */
-  width: 94%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
