@@ -10,7 +10,7 @@ const New_PopUp = () => {
 
   return (
     <>
-      <div className='div-row upload-cloud'>
+      <div className='div-row upload-cloud' onClick={() => navigate("/summarize")}>
         <BsCloudArrowUpFill className='popup-icon upload-icon' />
         <div>
           <h4>Upload</h4>
@@ -18,7 +18,7 @@ const New_PopUp = () => {
         </div>
       </div>
       <div className='div-row ask-quiz'>
-        <RiQuestionnaireFill className='popup-icon question-icon' />
+        <RiQuestionnaireFill className='popup-icon question-icon' onClick={() => navigate("/noteai")} />
         <div>
           <h4>Ask Question</h4>
           <h5>Ask a study question and get answer in seconds</h5>

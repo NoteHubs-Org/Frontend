@@ -19,7 +19,7 @@ const Dashboard = () => {
         </div>
 
         {/* Brainy Assistant Feature */}
-        <div className="feature-card brainy">
+        <div onClick={() => navigate("/NoteAI")} className="feature-card brainy">
           <FaRobot className="feature-icon" />
           <h4>Ask Brainy</h4>
           <p>Get instant answers & smart study insights.</p>
@@ -48,7 +48,7 @@ const Dashboard = () => {
             </button>
           </div>
           <div className="image-content">
-            <img src={assets.svgimg} />
+            <img src={assets.svgimg} alt=""/>
           </div>
           </div>
       </div>
