@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Profile from "../header/Profile";
-import { Routes, Route, useLocation } from "react-router-dom"; 
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom"; 
 import Dashboard from "./L_Body/Dashboard";
 import UploadPage from "../pages/uploads/UploadPage";
 import ChatUI from "../pages/chatAIPage/AIChat";
@@ -10,7 +10,8 @@ import Footer from "../footer/Footer";
 const LandPage = ({ isProfileVisible, toggleProfile, toggleSidebar, isExpanded }) => {
   const location = useLocation(); 
 
-  const isNoteAIPage = location.pathname === "/NoteAI";
+  const isNoteAIPage = location.pathname === "/noteai";
+  const navigate = useNavigate();
 
   return (
     <>
@@ -23,7 +24,7 @@ const LandPage = ({ isProfileVisible, toggleProfile, toggleSidebar, isExpanded }
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/summarize" element={<UploadPage />} />
-        <Route path="/NoteAI" element={<ChatUI />} />
+        <Route path="/noteai" element={<ChatUI />} />
         <Route path="/groups" element={<Dashboard />} />
         <Route path="/QAs" element={<Dashboard />} />
       </Routes>

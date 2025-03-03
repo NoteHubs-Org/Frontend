@@ -55,7 +55,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
 
         {/* Navigation Links */}
         <div className="nav_list">
-          <a href="#" className="nav_link active">
+          <a href="/" className="nav_link active">
             <BiGridAlt className="nav_icon" />
             <span className="nav_name">Dashboard</span>
           </a>
