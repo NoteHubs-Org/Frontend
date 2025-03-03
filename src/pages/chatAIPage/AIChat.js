@@ -3,6 +3,7 @@ import { FiSend } from "react-icons/fi";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { MdSearch, MdFormatListBulleted, MdChatBubble, MdSettings } from "react-icons/md";
 import "./ChatUI.css";
+import sendToBackend from "./sendToBackend";
 
 const ChatUI = () => {
   const [messages, setMessages] = useState([]);
@@ -18,25 +19,28 @@ const ChatUI = () => {
       Math.min(textareaRef.current.scrollHeight, 200) + "px"; 
   };
   
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (input.trim() === "") return;
 
     const userMessage = { id: Date.now(), sender: "user", text: input };
     setMessages([...messages, userMessage]);
     setShowCards(false);
+    setInput("");
+    textareaRef.current.style.height = "50px";
 
-    setTimeout(() => {
+    try {
+      const aiResponse = await sendToBackend(input);
+
       const aiMessage = {
         id: Date.now() + 1,
         sender: "ai",
-        text: "This is a sample AI response.",
-        image: "https://via.placeholder.com/150",
-      };
-      setMessages((prevMessages) => [...prevMessages, aiMessage]);
-    }, 1000);
+        text: aiResponse,
+      }
 
-    setInput("");
-    textareaRef.current.style.height = "50px";
+      setMessages((prevMessages) => [...prevMessages, aiMessage]);
+    } catch (error) {
+      console.error("Error fetching AI response: ", error);
+    }
   };
 
   return (
