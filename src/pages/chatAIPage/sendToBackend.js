@@ -9,7 +9,8 @@ export const sendToBackend = async (message) => {
     if (response.data && response.data.reply) {
       return response.data.reply;
     } else {
-      return "No valid response received from AI.";
+      console.error("Invalid Responce Format:")
+      return "Please connect to internet";
     }
   } catch (error) {
     console.error("Error communicating with backend:", error);
