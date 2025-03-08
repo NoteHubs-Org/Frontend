@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { handleFiles, handleDrop } from "./upload.js";
 
-const FileUpload = () => {
-  const [files, setFiles] = useState([]);
-
+const FileUpload = ({ files, setFiles }) => {
   const removeFile = (index) => {
     setFiles(files.filter((_, i) => i !== index));
   };

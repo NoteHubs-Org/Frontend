@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./upload.css";
 import FileUpload from "./FileUpload";
+import { uploadFiles } from "./upload";
 
 const UploadPage = () => {
+  const [files, setFiles] = useState([]);
   return (
     <div className="container">
       {/* Header */}
@@ -29,11 +31,14 @@ const UploadPage = () => {
       </div>
 
         {/* Upload Box */}
-        <FileUpload />
+        <FileUpload
+          files={files}
+          setFiles={setFiles}
+        />
 
 
         {/* Disabled Button */}
-      <button className="disabled-btn">✨ Summarize Document</button>
+      <button className="disabled-btn" onClick={() => uploadFiles(files)}>✨ Summarize Document</button>
     </div>
   );
 };
