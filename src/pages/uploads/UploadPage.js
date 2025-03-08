@@ -1,5 +1,6 @@
 import React from "react";
 import "./upload.css";
+import FileUpload from "./FileUpload";
 
 const UploadPage = () => {
   return (
@@ -27,14 +28,11 @@ const UploadPage = () => {
         ))}
       </div>
 
-      {/* Upload Box */}
-      <div className="upload-box">
-        <h3 className="upload-title">Upload multiple files</h3>
-        <button className="upload-btn">Browse your files</button>
-        <p className="upload-info">Supported formats: .pdf, .doc, .docx, .pptx</p>
-      </div>
+        {/* Upload Box */}
+        <FileUpload />
 
-      {/* Disabled Button */}
+
+        {/* Disabled Button */}
       <button className="disabled-btn">✨ Summarize Document</button>
     </div>
   );
