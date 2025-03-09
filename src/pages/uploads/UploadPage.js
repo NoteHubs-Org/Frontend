@@ -5,6 +5,14 @@ import { uploadFiles } from "./upload";
 
 const UploadPage = () => {
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSummarize = async () => {
+    setLoading(true);
+    await uploadFiles(files);
+    setLoading(false);
+  }
+
   return (
     <div className="container">
       {/* Header */}
@@ -38,7 +46,15 @@ const UploadPage = () => {
 
 
         {/* Disabled Button */}
-      <button className="disabled-btn" onClick={() => uploadFiles(files)}>✨ Summarize Document</button>
+        <div className="disabled-div" onClick={() => handleSummarize(files)} disabled={loading}>
+          {loading ? (
+            <>
+              Summarizing <span className="loader"></span>
+            </>
+          ) : (
+            "✨ Summarize Document"
+          )}
+        </div>
     </div>
   );
 };

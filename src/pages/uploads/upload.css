@@ -193,19 +193,53 @@
   font-size: 18px;
 }
 
-
-/* Disabled Button */
-.disabled-btn {
+/* Summarizing Loader */
+.disabled-div {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: gray;
+  text-align: center;
   color: white;
   padding: 10px;
   border-radius: 20px;
   margin-top: 20px;
   border: none;
   transition: background 0.3s ease;
+  cursor: pointer;
 }
 
-.disabled-btn:hover {
-  background: #a0a0a0;
+.disabled-div.loading {
+  background: #555;  /* Darker color when loading */
+  pointer-events: none; /* Prevents multiple clicks */
+}
+
+.loader {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 50px;
+  color: #ffffff;
+  box-sizing: border-box;
+  animation: animloader 1.5s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 2px, -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
+  }
 }
