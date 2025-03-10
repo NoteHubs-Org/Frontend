@@ -128,6 +128,7 @@
 }
 
 .drop-zone {
+  width: 100%;
   border: 2px dashed #b3c7e6;
   background-color: #f7faff;
   padding: 30px;
