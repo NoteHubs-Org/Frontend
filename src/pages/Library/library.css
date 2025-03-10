@@ -1,0 +1,96 @@
+.library-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.library-container1{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 40px;
+  margin: 10px;
+}
+.library-containers{
+  width: 90%;
+  background-color: white;
+  border-radius: 40px;
+  margin: 10px;
+}
+.library-containers h2{
+  margin-left: 20px;
+}
+.ai-uploads{
+  width: 100%;
+  display: flex;
+}
+.library-containers span{
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgb(60, 59, 59);
+}
+
+/* Uploads */
+.user-uploads{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-uploads div{
+  width: 90%;
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  align-items: center;
+  margin: 5px;
+  margin-left: 20px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+.user-uploads div:hover{
+  background-color: #f8f9fa;
+}
+.user-uploads p{
+  display: inline-block;
+  font-size: 16px;
+  color: black;
+}
+.lib-column .document-icon{
+  font-size: 20px;
+  margin: 0;
+  color: #007bff;
+  padding: 0;
+}
+.user-uploads .sub-heading{
+  color: #909090;
+  padding: 0;
+}
+.addIcon-button{
+  display: flex;
+  align-items: center;
+  gap: 4px; 
+  padding: 10px 16px;
+  border: 1px solid #c4c4c4;
+  border-radius: 20px; 
+  background-color: white;
+  color: #4a4a4a; 
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+.add-button:hover{
+  background-color: #f4f2f2;
+}
+.ad-icon{
+  font-size: 20px;
+  color: #007bff;
+  padding: 0;
+}

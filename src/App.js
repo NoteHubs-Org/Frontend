@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
-import './App.css';
-import Header from './header/Header';
-import LandPage from './landingPage/LandPage';
-import './footer/footer.css';
-import { BrowserRouter } from 'react-router-dom'; 
+import React, { useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import "./App.css";
+import Header from "./header/Header";
+import LandPage from "./landingPage/LandPage";
+import Sidebar from "./landingPage/sidebar/Sidebar";
+import MyLibrary from "./pages/Library/MyLibrary";
+import Footer from "./footer/Footer";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
-
-  const toggleProfile = () => {
-    setIsVisible(!isVisible);
-  };
-
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const toggleProfile = () => setIsVisible(!isVisible);
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
+
+  const location = useLocation();
 
   return (
-    <BrowserRouter>
+    <>
       <Header toggleProfile={toggleProfile} />
-      <LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile}
-      toggleSidebar={toggleSidebar}
-      isExpanded={isExpanded} />
-    </BrowserRouter>
+      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} className="sidebar" />
+      
+      <Routes>
+        <Route path="/*" element={<LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />} />
+        <Route path="/library" element={<MyLibrary />} />
+      </Routes>
+      {location.pathname !== "/NoteAI" && <Footer />}
+    </>
   );
 }
 

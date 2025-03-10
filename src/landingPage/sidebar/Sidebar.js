@@ -59,7 +59,7 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
             <BiGridAlt className="nav_icon" />
             <span className="nav_name">Dashboard</span>
           </a>
-          <a href="#" className="nav_link">
+          <a href="/library" className="nav_link">
             <IoLibraryOutline className="nav_icon" />
             <span className="nav_name">My Library</span>
           </a>
