@@ -244,3 +244,30 @@
     box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
   }
 }
+/* Editor */
+.editor-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 150px;
+  background: white;
+}
+
+.editor-input {
+  min-height: 100px;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.editor-placeholder {
+  color: gray;
+  position: absolute;
+  pointer-events: none;
+  padding: 10px;
+}
+
+.editor-container.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

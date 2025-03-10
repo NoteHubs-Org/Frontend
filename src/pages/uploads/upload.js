@@ -29,7 +29,7 @@ export const uploadFiles = async (files) => {
     if (!response.ok) throw new Error("Upload failed");
 
     const data = await response.json();
-    console.log("Upload successful:", data);
+    return data.message;
   } catch (error) {
     console.error("Upload error:", error);
   }
