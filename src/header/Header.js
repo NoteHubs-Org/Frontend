@@ -6,7 +6,7 @@ import "./header.css"
 import CircularProfile from './HeaderProfile';
 import { IoMdSearch } from "react-icons/io";
 
-const Header = ({ toggleProfile }) => {
+const Header = ({ toggleProfile, openChatSlide }) => {
   return (
     <div className='header'>
       <h2 className='logo-name'>NoteHub</h2>
@@ -16,7 +16,7 @@ const Header = ({ toggleProfile }) => {
       </div>
       <div className='header-right'>
         <IoIosNotifications className='header-icon' />
-        <IoIosChatbubbles className='header-icon' />
+        <IoIosChatbubbles className="header-icon" onClick={openChatSlide} />
         <div className='div-profile'>
           <CircularProfile imageUrl={'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} />
           <MdKeyboardArrowLeft onClick={toggleProfile} />

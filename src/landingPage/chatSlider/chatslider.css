@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+.chatslide {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  height: calc(100vh - 80px);
+  margin-top: 5px;
+  background-color: #e3f2fd;
+  border: none;
+  border-top-left-radius: 10px;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease;
+  width: 0;
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+  z-index: 900;
+}
+
+.chatslide.expand {
+  width: 45%;
+}
+.close-btn{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  justify-content: center;
+  border-radius: 50%;
+  right: 10px;
+  margin-top: 10px;
+  transition: 0.1s ease;
+  z-index: 901;
+}
+.close-btn:hover{
+  background-color: #f0f0f0;
+}
+.close-btn:active{
+  background-color: #e4e3e3;
+}
+.close-btn .btn-icon{
+  font-size: 20px;
+  color: #000000;
+  padding: 6px;
+  border-radius: 50%;
+}
