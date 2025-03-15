@@ -3,9 +3,8 @@ import "./chatslider.css";
 import { PiXBold } from "react-icons/pi";
 import { MdOutlineGroups2 } from "react-icons/md";
 import ChatRow from "./ChatRow";
-import { TiGroup } from "react-icons/ti";
 import { IoMdSearch } from "react-icons/io";
-import { MdOutlineAddCircle, MdExplore } from "react-icons/md";
+import ChatWindow from "./chatWindow.js";
 
 const ChatSlide = ({ isExpanded, closeChatSlide }) => {
   const sidebarRef = useRef(null);
@@ -37,10 +36,8 @@ const ChatSlide = ({ isExpanded, closeChatSlide }) => {
               notifsNo={2}
             />
           </div>
-          <div>
-
-          </div>
         </div>
+        <ChatWindow />
       </div>
     </div>
   );
