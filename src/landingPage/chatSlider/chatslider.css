@@ -224,6 +224,7 @@
   color: #878787;
 }
 .chat-input{
+  max-height: 30px;
   border: none;
   background-color: white;
 }
