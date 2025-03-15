@@ -44,11 +44,16 @@
   padding: 6px;
   border-radius: 50%;
 }
+.chat-body{
+  height: 100%;
+}
 .chat-body .chat-left{
   display: flex;
   flex-direction: column;
+  height: 95%;
   gap: 0;
-  width: 45%;
+  width: 40%;
+  border-right: solid 1px rgb(181, 179, 179);
 }
 .chat-body .chat-left h3{
   display: flex;
@@ -62,11 +67,12 @@
 .chat-search-container{
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 90%;
   background-color: transparent;
   border: solid 2px #bababa;
   border-radius: 12px;
   height: 30px;
+  margin-left: 20px;
 }
 .chat-search-input{
   width: 80%;
