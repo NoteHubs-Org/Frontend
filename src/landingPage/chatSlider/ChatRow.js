@@ -1,17 +1,16 @@
 import React from 'react'
 import { MdOutlineGroupAdd } from "react-icons/md";
 
-const ChatRow = ({ title, notifsNo, campusName }) => {
-  const notifications = toString(notifsNo);
-  
+const ChatRow = ({ title, notifsNo, campusName }) => {  
+  const notifsNumber = notifsNo.toString()
   return (
-    <div className='chat-row'>
-      <div><MdOutlineGroupAdd /></div>
-      <div>
+    <div className='chat-left-row'>
+      <div className='icon-div'><MdOutlineGroupAdd className='chat-icon'/></div>
+      <div className='middle-chat-left-row'>
         <h4>{title}</h4>
-        <h5>{ campusName}</h5>
+        <h6>{ campusName}</h6>
       </div>
-      <div>{notifications}</div>
+      <div className='notif-no'><p>{notifsNumber}</p></div>
     </div>
   )
 }

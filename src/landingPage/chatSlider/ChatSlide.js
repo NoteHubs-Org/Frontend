@@ -14,51 +14,32 @@ const ChatSlide = ({ isExpanded, closeChatSlide }) => {
     <div className={`chatslide ${isExpanded ? "expand" : ""}`} ref={sidebarRef}>
       <div className="close-btn" onClick={closeChatSlide}><PiXBold className="header-icon btn-icon" /></div>
       <div className="chat-body">
-        <div className="chet-left">
-         <div>
-            <h3><MdOutlineGroups2 />My Groups</h3>
-            <div class="search-container">
-              <input type="text" class="search-input" placeholder="Search for courses, books, or documents..." />
-              <IoMdSearch className='header-icon' />
+        <div className="chat-left">
+          <div className="left-top">
+            <h3><MdOutlineGroups2 className="left-title-icon" />My Groups</h3>
+            <div class="chat-search-container">
+              <input type="text" class="chat-search-input" placeholder="Find new groups" />
+              <IoMdSearch className='chat-search-icon' />
             </div>
             <ChatRow 
               title={"Degree Nursing"}
               campusName={"Mt.Kenya University"}
               notifsNo={2}
             />
-         </div>
-         <h3>Recommended for you</h3>
+            <ChatRow 
+              title={"Comp Science"}
+              campusName={"Mt.Kenya University"}
+              notifsNo={2}
+            />
+            <ChatRow 
+              title={"Gen Science"}
+              campusName={"Kenyatta University"}
+              notifsNo={2}
+            />
+          </div>
           <div>
-            <div>
-              <MdOutlineGroups2 />
-              <p>Study group for kjsea</p>
-            </div>
-            <div>
-              <MdOutlineGroups2 />
-              <p>Math</p>
-            </div>
-            <div>
-              <MdOutlineGroups2 />
-              <p>Computer Science</p>
-            </div>
-          </div>
-          <div className="chat-lef-bottom">
-            <div>
-              <TiGroup />
-              <h4>Groups</h4>
-            </div>
-            <div>
-              <MdExplore />
-              <h4>Explore</h4>
-            </div>
-            <div>
-              <MdOutlineAddCircle />
-              <h4>Create</h4>
-            </div>
-          </div>
-        </div>
-        <div className="chat-right">
 
+          </div>
         </div>
       </div>
     </div>
