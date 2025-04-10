@@ -224,7 +224,34 @@
   color: #878787;
 }
 .chat-input{
-  max-height: 30px;
-  border: none;
+  max-height: 20px;
+  width: 90%;
+  margin-bottom: 20px;
+  border: solid 2px gray;
   background-color: white;
+  border-radius: 20px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-el{
+  width: 80%;
+  height: 40px;  
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.send-btn{
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: #1A73E8;
+  border-radius: 20px;
+}
+.send-btn:hover{
+  opacity: 0.8;
+}
+.icon-send-btn{
+  color: white;
 }

@@ -62,15 +62,15 @@ const ChatWindow = ({ onClose }) => {
       {/* Input Area */}
       <div className="chat-input">
         <input
+          className="input-el"
           type="text"
           placeholder="Type here..."
           value={currentMessage}
           onChange={(e) => setCurrentMessage(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          className=""
         />
         <button className="send-btn" onClick={sendMessage}>
-          <FaPaperPlane />
+          <FaPaperPlane className="icon-send-btn" />
         </button>
       </div>
     </div>
