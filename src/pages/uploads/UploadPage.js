@@ -13,7 +13,6 @@ const UploadPage = () => {
   const handleSummarize = async () => {
     setLoading(true);
     const result = await uploadFiles(files); // Assume this returns the summary
-    console.log(result)
     setSummary(result); // Store fetched summary
     setEditorEnabled(true); // Enable editor
     setLoading(false);
