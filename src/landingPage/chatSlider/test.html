@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Group Chat Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 24px;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .groups-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        .groups-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .group-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .group-item:hover::before {
+            left: 100%;
+        }
+
+        .group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #4f46e5;
+        }
+
+        .group-item.active {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .group-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .group-item.active .group-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .group-info {
+            flex: 1;
+        }
+
+        .group-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .group-item.active .group-name {
+            color: white;
+        }
+
+        .group-university {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .group-item.active .group-university {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .group-badge {
+            width: 28px;
+            height: 28px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .group-item.active .group-badge {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .chat-header {
+            padding: 24px;
+            border-bottom: 1px solid #e2e8f0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: between;
+        }
+
+        .chat-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .chat-subtitle {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(248, 113, 113, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #ef4444;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: auto;
+            font-size: 18px;
+        }
+
+        .close-btn:hover {
+            background: #ef4444;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .messages-area {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: linear-gradient(180deg, #fafbfc 0%, #f1f5f9 100%);
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .message:nth-child(1) { animation-delay: 0.1s; }
+        .message:nth-child(2) { animation-delay: 0.2s; }
+        .message:nth-child(3) { animation-delay: 0.3s; }
+        .message:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #10b981;
+            border: 3px solid white;
+            border-radius: 50%;
+            bottom: -2px;
+            right: -2px;
+        }
+
+        .message-content {
+            flex: 1;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .sender-name {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 16px;
+        }
+
+        .message-time {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .message-text {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 20px 20px 20px 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #374151;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .message-text:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-area {
+            padding: 24px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 8px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .input-container:focus-within {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        .message-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 16px 20px;
+            font-size: 16px;
+            background: transparent;
+            color: #374151;
+        }
+
+        .message-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .send-btn {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 100vh;
+                border-radius: 0;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: absolute;
+                z-index: 10;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="groups-icon">👥</div>
+                <h2 class="sidebar-title">My Groups</h2>
+            </div>
+            
+            <div class="search-box">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" placeholder="Find new groups">
+            </div>
+            
+            <div class="groups-list">
+                <div class="group-item active" data-group="nursing">
+                    <div class="group-icon">🏥</div>
+                    <div class="group-info">
+                        <div class="group-name">Degree Nursing</div>
+                        <div class="group-university">Mt.Kenya University</div>
+                    </div>
+                    <div class="group-badge">2</div>
+                </div>
+                
+                <div class="group-item" data-group="comp">
+                    <div class="group-icon">💻</div>
+                    <div class="group-info">
+                        <div class="group-name">Comp Science</div>
+                        <div class="group-university">Mt.Kenya University</div>
+                    </div>
+                    <div class="group-badge">2</div>
+                </div>
+                
+                <div class="group-item" data-group="gen">
+                    <div class="group-icon">🧬</div>
+                    <div class="group-info">
+                        <div class="group-name">Gen Science</div>
+                        <div class="group-university">Kenyatta University</div>
+                    </div>
+                    <div class="group-badge">2</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-area">
+            <div class="chat-header">
+                <div>
+                    <div class="chat-title">Degree Nursing (BSCN87265)</div>
+                    <div class="chat-subtitle">100 students | Mt.Kenya University</div>
+                </div>
+                <button class="close-btn">✕</button>
+            </div>
+            
+            <div class="messages-area">
+                <div class="message">
+                    <div class="avatar">KK</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">Kingsley Kingston</span>
+                            <span class="message-time">1w</span>
+                        </div>
+                        <div class="message-text">woza</div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="avatar">FB</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">Festus Bao</span>
+                            <span class="message-time">1w</span>
+                        </div>
+                        <div class="message-text">Hello</div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="avatar">BO</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">Barrack Owoko</span>
+                            <span class="message-time">1w</span>
+                        </div>
+                        <div class="message-text">DO A TEST FOR STARCH IN A LEAF</div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="avatar">JK</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="sender-name">Jhan Kamau</span>
+                            <span class="message-time">6d</span>
+                        </div>
+                        <div class="message-text">Hae hae guys</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <div class="input-container">
+                    <input type="text" class="message-input" placeholder="Type here...">
+                    <button class="send-btn">➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive functionality
+        document.querySelectorAll('.group-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.group-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Animate messages on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.message').forEach(message => {
+            observer.observe(message);
+        });
+
+        // Send message functionality
+        const messageInput = document.querySelector('.message-input');
+        const sendBtn = document.querySelector('.send-btn');
+
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (text) {
+                // Add message animation here
+                messageInput.value = '';
+                sendBtn.style.transform = 'scale(1.2) rotate(30deg)';
+                setTimeout(() => {
+                    sendBtn.style.transform = 'scale(1) rotate(0deg)';
+                }, 200);
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.group-item').forEach(item => {
+                const name = item.querySelector('.group-name').textContent.toLowerCase();
+                const university = item.querySelector('.group-university').textContent.toLowerCase();
+                
+                if (name.includes(query) || university.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
