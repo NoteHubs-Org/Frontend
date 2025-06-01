@@ -42,7 +42,7 @@
   font-size: 18px;
 }
 .search input{
- width: 100%; 
+ width: 80%; 
  padding: 14px 20px 14px 48px; 
  border: 2px solid #e2e8f0; border-radius: 16px; 
  font-size: 16px; 
@@ -55,7 +55,19 @@
   flex-direction: column; 
   gap: 12px;
 }
+
 .group{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.group-active{
   display: flex; 
   align-items: center; 
   gap: 16px; 
@@ -71,31 +83,27 @@
   box-shadow:0 8px 25px rgba(0, 0, 0, 0.1);
   border-color: #4f46e5;
 }
-.group:active{
-  transform: translateY(0); 
-  box-shadow:none; 
-  border-color: transparent;
-}
+
 .group-icon{
   width: 48px; 
   height: 48px; 
-  background: rgba(255, 255, 255, 0.2); border-radius: 12px; 
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  border-radius: 12px; 
   display: flex; 
-  align-items: center; justify-content: center; 
+  align-items: center; 
+  justify-content: center; 
   color: white; 
   font-size: 20px; 
-  flex-shrink: 0;
 }
 
 .group-mid{
   width: 48px; 
   height: 48px; 
-  background: linear-gradient(45deg, #4f46e5, #7c3aed); 
   border-radius: 12px; 
   display: flex; 
+  flex-direction: column;
   align-items: center;
   justify-content: center; 
-  color: white; 
   font-size: 20px; 
   flex: 1;
   flex-shrink: 0;
@@ -104,11 +112,9 @@
   font-size: 18px; 
   font-weight: 600; 
   margin-bottom: 4px; 
-  color: #1e293b;
 }
 .university-name{
   font-size: 14px; 
-  color: #64748b;
 }
 .notif-number{
   width: 28px; 
@@ -226,7 +232,7 @@
   font-size: 20px;
 }
 .send-msg-btn:hover{
-  transform:scale(1.1) rotate(15deg); 
+  transform:scale(1.1); 
   box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
 }
 .chat-overlay {
