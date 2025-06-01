@@ -5,7 +5,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import "./header.css"
 import CircularProfile from './HeaderProfile';
 
-const Header = ({ toggleProfile, openChatSlide }) => {
+const Header = ({ toggleProfile, toggleChat }) => {
   return (
     <div className='header'>
       <h1 className='logo-name'>NoteHub</h1>
@@ -17,7 +17,7 @@ const Header = ({ toggleProfile, openChatSlide }) => {
 
       <div className='header-right'>
         <button className='header-icon' ><IoIosNotifications /></button>
-        <button className='header-icon open-chat-header' onClick={openChatSlide} ><IoIosChatbubbles /></button>
+        <button className='header-icon open-chat-header' onClick={toggleChat} ><IoIosChatbubbles /></button>
         
         <div className='user-avatar'>
           <CircularProfile imageUrl={'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} />

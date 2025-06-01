@@ -7,7 +7,7 @@ import { RiQuestionAnswerLine } from "react-icons/ri";
 import { HiChevronLeft } from "react-icons/hi2";
 import "./sidebar.css";
 
-const Sidebar = ({ isExpanded, toggleSidebar }) => {
+const Sidebar = ({ isExpanded, toggleSidebar,  }) => {
   const [isHidden, setIsHidden] = useState(false);
 
   const toggleHidden = () => {
@@ -43,15 +43,15 @@ const Sidebar = ({ isExpanded, toggleSidebar }) => {
 
       {/* Sidebar Content */}
       <nav className="nav">
-      <div className='add-doc' onClick={toggleHidden}>
-            <IoAdd className='nav_icon add-icon'/>
-            {isExpanded && 
-              <>
-                <p className='add-p'>Add New Doc</p>
-                <div  className={(isExpanded && isHidden) ? 'popup-div' : 'hide-popup'} ><New_PopUp /></div>
-              </>
-            }
-          </div>
+        <div className='add-doc' onClick={toggleHidden}>
+          <IoAdd className='nav_icon add-icon'/>
+          {isExpanded && 
+            <>
+              <p className='add-p'>Add New Doc</p>
+              <div  className={(isExpanded && isHidden) ? 'popup-div' : 'hide-popup'} ><New_PopUp /></div>
+            </>
+          }
+        </div>
 
         {/* Navigation Links */}
         <div className="nav_list">

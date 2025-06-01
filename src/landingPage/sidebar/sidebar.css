@@ -2,30 +2,44 @@
 
 .sidebar {
   position: fixed;
-  top: 80px;
+  top: 72px;
   left: 0;
+  width: 50px;
   height: calc(100vh - 80px);
-  background-color: #fff;
-  transition: width 0.3s ease;
-  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  transition: all 0.3s ease;
   font-family: 'Nunito', sans-serif;
   overflow: hidden;
   z-index: 900;
 }
 
 .sidebar.expanded {
-  width: 250px;
+  width: 280px;
 }
 
 .menu-button {
-  right: -30px;
-  background: none;
-  border: none;
-  font-size: 24px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin: 0 10px;
+  border-radius: 12px;
+  background: rgba(79, 70, 229, 0.1);
+  border: solid 1px;
+  color: #4f46e5;
   cursor: pointer;
-  color: #000;
-  margin: 20px 0;
-  padding: 0 18px;
+  transition: 0.4s ease;
+}
+.menu-button:hover{
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
 }
 .x-button {
   position: absolute;
@@ -49,27 +63,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #3092fa;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
   color: white;
+  border-radius: 16px;
   border: none;
   padding: 10px;
   margin-top: 0;
   margin-bottom: 40px;
+  transition: all 0.3s ease;
 }
 .add-icon{
   color: white;
 }
 .add-doc:hover{
-  background-color: #307dfa;
+  /* transform: scale(1.02); */
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+.add-doc:active{
+  opacity: 0.7;
 }
 .add-p{
   display: inline;
   margin: 0;
+  color: white;
 }
 
 .nav {
   margin: 20px 9px;
   height: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
@@ -87,16 +109,21 @@
   text-decoration: none;
   padding: 10px;
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .nav_link:hover {
-  background-color: rgba(195, 232, 254, 0.473);
+  background: white;
+  color: #4f46e5;
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .nav_link.active {
-  color: #000;
-  background-color: rgba(195, 232, 254, 0.873);
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
 }
 
 .nav_icon, .add-icon{

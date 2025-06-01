@@ -12,30 +12,27 @@ import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isChatExpanded, setChatExpanded] = useState(false)
 
   const toggleProfile = () => setIsVisible(!isVisible);
   const toggleSidebar = () => setIsExpanded(!isExpanded);
-
-  const openChatSlide = () => {
-    if (!isChatExpanded) {
-      setChatExpanded(true); // Only open, never close from icon
+  
+  const toggleChat = () => {
+    const overlay = document.getElementById('chatOverlay');
+    if (overlay.style.display === 'flex') {
+        overlay.style.display = 'none';
+    } else {
+        overlay.style.display = 'flex';
     }
-  };
-  
-  const closeChatSlide = () => {
-    setChatExpanded(false); // Close only from button inside chat
-  };
-  
+}
 
   const location = useLocation();
 
   return (
     <>
-      <Header toggleProfile={toggleProfile} openChatSlide={openChatSlide} />
+      <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
       <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} className="sidebar" />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
-      <ChatSlide isExpanded={isChatExpanded} closeChatSlide={closeChatSlide} />
+      <ChatSlide toggleChat={toggleChat}/>
       
       <Routes>
         <Route path="/*" element={<LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />} />
