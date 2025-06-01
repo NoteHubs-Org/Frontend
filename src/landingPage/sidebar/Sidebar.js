@@ -7,7 +7,7 @@ import { RiQuestionAnswerLine } from "react-icons/ri";
 import { HiChevronLeft } from "react-icons/hi2";
 import "./sidebar.css";
 
-const Sidebar = ({ isExpanded, toggleSidebar,  }) => {
+const Sidebar = ({ isExpanded, toggleChat, toggleSidebar,  }) => {
   const [isHidden, setIsHidden] = useState(false);
 
   const toggleHidden = () => {
@@ -63,7 +63,7 @@ const Sidebar = ({ isExpanded, toggleSidebar,  }) => {
             <IoLibraryOutline className="nav_icon" />
             <span className="nav_name">My Library</span>
           </a>
-          <a href="#" className="nav_link">
+          <a href="#" onClick={toggleChat} className="nav_link">
             <MdOutlineGroups2 className="nav_icon" />
             <span className="nav_name">Groups</span>
           </a>

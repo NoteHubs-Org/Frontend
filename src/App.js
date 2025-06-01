@@ -26,7 +26,7 @@ const toggleChat = () => {
   return (
     <>
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
-      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} className="sidebar" />
+      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} className="sidebar" />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
       {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
 

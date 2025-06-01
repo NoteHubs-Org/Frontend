@@ -10,29 +10,33 @@ const Dashboard = () => {
 
   return (
     <div className="dash-body">
+      <div class="section-header">
+        <h1 class="section-title">Welcome to NoteHubs</h1>
+        <span class="section-badge">Education Platform</span>
+      </div>
       <div className="dashboard-container">
         {/* ChatPDF Feature */}
         <div onClick={() => navigate("/summarize")} className="feature-card chatpdf">
-          <FaFileAlt className="feature-icon" />
+          <div className="feature-icon"><FaFileAlt  /></div>
           <h4>Summarize Documents</h4>
           <p>Use ChatPDF to generate summaries & extract key points.</p>
         </div>
 
         {/* Brainy Assistant Feature */}
         <div onClick={() => navigate("/NoteAI")} className="feature-card brainy">
-          <FaRobot className="feature-icon" />
+          <div className="feature-icon" ><FaRobot /></div>
           <h4>Ask Brainy</h4>
           <p>Get instant answers & smart study insights.</p>
         </div>
 
         {/* Study Hubs Feature */}
         <div className="feature-card study-hubs">
-          <FaUsers className="feature-icon" />
+          <div className="feature-icon" ><FaUsers /></div>
           <h4>Explore Study Hubs</h4>
           <p>Join study groups & collaborate with peers.</p>
         </div>
         <div className="feature-card chatpdf">
-          <FaFileAlt className="feature-icon" />
+          <div className="feature-icon" >< FaFileAlt /></div>
           <h4>Convert Documents</h4>
           <p>Fast PDF to Word, Excel, PPT, and more—effortless and accurate!</p>
         </div>
