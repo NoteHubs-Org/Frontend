@@ -8,6 +8,7 @@ import MyLibrary from "./pages/Library/MyLibrary";
 import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
+import AuthRoutes from "./authRoutes/AuthRoutes";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,6 +26,7 @@ const toggleChat = () => {
 
   return (
     <>
+      <AuthRoutes />
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
       <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} className="sidebar" />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />

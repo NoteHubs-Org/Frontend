@@ -5,7 +5,7 @@ import { IoIosPaper } from "react-icons/io";
 import './sidebar.css'
 import { useNavigate } from 'react-router-dom';
 
-const New_PopUp = () => {
+const NewPopUp = () => {
   const navigate = useNavigate();
 
   return (
@@ -35,4 +35,4 @@ const New_PopUp = () => {
   )
 }
 
-export default New_PopUp
+export default NewPopUp

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import New_PopUp from './New_PopUp';
+import NewPopUp from './New_PopUp';
 import { BiMenu, BiGridAlt, BiBarChartAlt2, BiLogOut } from "react-icons/bi";
 import { IoAdd, IoLibraryOutline } from "react-icons/io5";
 import { MdOutlineGroups2 } from "react-icons/md";
@@ -7,8 +7,9 @@ import { RiQuestionAnswerLine } from "react-icons/ri";
 import { HiChevronLeft } from "react-icons/hi2";
 import "./sidebar.css";
 
-const Sidebar = ({ isExpanded, toggleChat, toggleSidebar,  }) => {
+const Sidebar = ({ isExpanded, toggleSidebar, toggleChat }) => {
   const [isHidden, setIsHidden] = useState(false);
+  const [activeTab, setActiveTab] = useState(false);
 
   const toggleHidden = () => {
     setIsHidden(!isHidden)
@@ -43,19 +44,19 @@ const Sidebar = ({ isExpanded, toggleChat, toggleSidebar,  }) => {
 
       {/* Sidebar Content */}
       <nav className="nav">
-        <div className='add-doc' onClick={toggleHidden}>
-          <IoAdd className='nav_icon add-icon'/>
-          {isExpanded && 
-            <>
-              <p className='add-p'>Add New Doc</p>
-              <div  className={(isExpanded && isHidden) ? 'popup-div' : 'hide-popup'} ><New_PopUp /></div>
-            </>
-          }
-        </div>
+      <div className='add-doc' onClick={toggleHidden}>
+            <IoAdd className='nav_icon add-icon'/>
+            {isExpanded && 
+              <>
+                <p className='add-p'>Add New Doc</p>
+                <div  className={(isExpanded && isHidden) ? 'popup-div' : 'hide-popup'} ><NewPopUp /></div>
+              </>
+            }
+          </div>
 
         {/* Navigation Links */}
         <div className="nav_list">
-          <a href="/" className="nav_link active">
+          <a href="/" className="nav_link active" >
             <BiGridAlt className="nav_icon" />
             <span className="nav_name">Dashboard</span>
           </a>
@@ -63,7 +64,7 @@ const Sidebar = ({ isExpanded, toggleChat, toggleSidebar,  }) => {
             <IoLibraryOutline className="nav_icon" />
             <span className="nav_name">My Library</span>
           </a>
-          <a href="#" onClick={toggleChat} className="nav_link">
+          <a href="#" onClick={toggleChat} className="nav_link" >
             <MdOutlineGroups2 className="nav_icon" />
             <span className="nav_name">Groups</span>
           </a>
@@ -71,7 +72,7 @@ const Sidebar = ({ isExpanded, toggleChat, toggleSidebar,  }) => {
             <RiQuestionAnswerLine className="nav_icon" />
             <span className="nav_name">Questions</span>
           </a>
-          <a href="#" className="nav_link">
+          <a href="#" className="nav_link" >
             <BiBarChartAlt2 className="nav_icon" />
             <span className="nav_name">Stats</span>
           </a>
