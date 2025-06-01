@@ -12,18 +12,14 @@ import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false);
+
+const toggleChat = () => {
+  setIsChatVisible(!isChatVisible);
+}
 
   const toggleProfile = () => setIsVisible(!isVisible);
   const toggleSidebar = () => setIsExpanded(!isExpanded);
-  
-  const toggleChat = () => {
-    const overlay = document.getElementById('chatOverlay');
-    if (overlay.style.display === 'flex') {
-        overlay.style.display = 'none';
-    } else {
-        overlay.style.display = 'flex';
-    }
-}
 
   const location = useLocation();
 
@@ -32,8 +28,8 @@ function App() {
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
       <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} className="sidebar" />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
-      <ChatSlide toggleChat={toggleChat}/>
-      
+      {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
+
       <Routes>
         <Route path="/*" element={<LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />} />
         <Route path="/library" element={<MyLibrary />} />
