@@ -9,6 +9,7 @@ import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 import AuthRoutes from "./authRoutes/AuthRoutes";
+import ProtectedRoutes from "./authRoutes/ProtectedRoutes";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,17 +27,20 @@ const toggleChat = () => {
 
   return (
     <>
-      <AuthRoutes />
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
       <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} className="sidebar" />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
       {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
 
       <Routes>
-        <Route path="/*" element={<LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />} />
-        <Route path="/library" element={<MyLibrary />} />
+        <AuthRoutes />
+        <Route path="/*" element={
+          <ProtectedRoutes>
+            <LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />
+            <Route path="/library" element={<MyLibrary />} />
+          </ProtectedRoutes>} />
+          {location.pathname !== "/NoteAI" &&  <Footer />}
       </Routes>
-      {location.pathname !== "/NoteAI" && <Footer />}
     </>
   );
 }
