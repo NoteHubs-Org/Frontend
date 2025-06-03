@@ -9,7 +9,6 @@ import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 import AuthRoutes from "./authRoutes/AuthRoutes";
-import ProtectedRoutes from "./authRoutes/ProtectedRoutes";
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
