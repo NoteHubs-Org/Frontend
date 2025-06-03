@@ -1,3 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import authenticate from "./Authenticate.js";
 
 const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      setLoading(true);
+      const user = await authenticate();
+      setUser(user);
+      setLoading(false);
+    };
+    checkAuth();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ user, loading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);

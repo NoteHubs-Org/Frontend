@@ -1,12 +1,16 @@
-import { api } from "../utils/axios"
+import { api } from "../utils/axios";
 
-const authenticate = () => {
+const authenticate = async () => {
   try {
-    const res = api.get("/");
-    console.log(res.data)
+    const res = await api.get("/auth/check", { withCredentials: true });
+    if (res.data.authenticated) {
+      return res.data.user;
+    }
+    return null;
   } catch (error) {
-    console.log(error)
+    console.error("Authentication check failed:", error);
+    return null;
   }
-}
+};
 
 export default authenticate;

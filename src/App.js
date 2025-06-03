@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
 import LandPage from "./landingPage/LandPage";
@@ -9,38 +9,52 @@ import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 import AuthRoutes from "./authRoutes/AuthRoutes";
+import { AuthProvider } from "./authRoutes/authContext";
+import ProtectedLayout from "./authRoutes/ProtectedLayout";
 
-function App() {
+function LayoutWrapper() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
 
-const toggleChat = () => {
-  setIsChatVisible(!isChatVisible);
-}
-
+  const toggleChat = () => setIsChatVisible(!isChatVisible);
   const toggleProfile = () => setIsVisible(!isVisible);
   const toggleSidebar = () => setIsExpanded(!isExpanded);
-
-  const location = useLocation();
 
   return (
     <>
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
-      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} className="sidebar" />
+      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
       {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
-
-      <Routes>
-        <AuthRoutes />
-        <Route path="/*" element={
-          <ProtectedRoutes>
-            <LandPage isProfileVisible={isVisible} toggleProfile={toggleProfile} toggleSidebar={toggleSidebar} isExpanded={isExpanded} />
-            <Route path="/library" element={<MyLibrary />} />
-          </ProtectedRoutes>} />
-          {location.pathname !== "/NoteAI" &&  <Footer />}
-      </Routes>
+      
+      <LandPage
+        isProfileVisible={isVisible}
+        toggleProfile={toggleProfile}
+        toggleSidebar={toggleSidebar}
+        isExpanded={isExpanded}
+      />
+      
+      <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <Routes>
+        {/* ✅ Public (unprotected) routes */}
+        <Route path="/*" element={<AuthRoutes />} />
+
+        {/* 🔐 Protected routes group */}
+        <Route element={<ProtectedLayout />}>
+          <Route path="/" element={<LayoutWrapper />} />
+          <Route path="/library" element={<MyLibrary />} />
+          {/* Add more protected routes here */}
+        </Route>
+      </Routes>
+    </AuthProvider>
   );
 }
 
