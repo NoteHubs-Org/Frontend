@@ -2,7 +2,7 @@ import { api } from "../utils/axios";
 
 const authenticate = async () => {
   try {
-    const res = await api.get("/auth/check", { withCredentials: true });
+    const res = await api.get("/auth", { withCredentials: true });
     if (res.data.authenticated) {
       return res.data.user;
     }

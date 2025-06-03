@@ -1,4 +1,5 @@
 import React from 'react'
+import "./auth.css"
 
 const Login = () => {
   return (
@@ -35,20 +36,14 @@ const Login = () => {
             </div>
             
             <button type="submit" className="login-btn">Sign In</button>
-
-            <div className="divider">
-                <span>or continue with</span>
-            </div>
-            
-            <div className="social-login">
-                <button type="button" className="social-btn" title="Google">🌐</button>
-                <button type="button" className="social-btn" title="Microsoft">🏢</button>
-                <button type="button" className="social-btn" title="Apple">🍎</button>
-            </div>
-            
             <div className="signup-link">
-                Don't have an account? <a href="#" id="signupLink">Sign up here</a>
+                Don't have an account? <a href="/signup" id="signupLink">Sign up here</a>
             </div>
+
+            {/* <div className="divider">
+                <span>or continue with</span>
+            </div> */}
+            
         </form>
     </div>
   )
