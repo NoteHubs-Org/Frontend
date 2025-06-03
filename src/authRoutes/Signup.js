@@ -51,30 +51,30 @@ const SignUp = () => {
                 <div className="form-row">
                     <div className="form-group">
                         <label className="form-label" for="firstName">First Name</label>
-                        <input type="text" id="firstName" className="form-input" placeholder="John" onChange={handleChnge} value={form.firstName} required />
+                        <input type="text" id="firstName" className="form-input" placeholder="John" name='firstName' onChange={handleChnge} value={form.firstName} required />
                     </div>
                     <div className="form-group">
                         <label className="form-label" for="lastName">Last Name</label>
-                        <input type="text" id="lastName" className="form-input" placeholder="Doe" onChange={handleChnge} value={form.lastName} required />
+                        <input type="text" id="lastName" className="form-input" placeholder="Doe" name='lastName' onChange={handleChnge} value={form.lastName} required />
                     </div>
                 </div>
                 
                 <div className="form-group">
                     <label className="form-label" for="email">Email Address</label>
-                    <input type="email" id="email" className="form-input" placeholder="john.doe@university.edu" onChange={handleChnge} value={form.email}  required />
+                    <input type="email" id="email" className="form-input" placeholder="john.doe@university.edu" name='email' onChange={handleChnge} value={form.email}  required />
                 </div>
 
                 <div className="form-group">
                     <label className="form-label" for="studentId">Student ID</label>
-                    <input type="text" id="studentId" className="form-input" onChange={handleChnge} value={form.studentId}  placeholder="ST123456" />
+                    <input type="text" id="studentId" className="form-input" name='studentId' onChange={handleChnge} value={form.studentId}  placeholder="ST123456" />
                 </div>
 
                 <div className="form-row">
                     <div className="form-group">
                         <label className="form-label" for="university">University</label>
-                        <select id="university" className="form-select" onChange={handleChnge} value={form.university} >
+                        <select id="university" className="form-select" name='university' onChange={handleChnge} value={form.university} >
                             <option value="">Select University</option>
-                            <option value="mtu">Mt. Kenya University</option>
+                            <option value="mku">Mt. Kenya University</option>
                             <option value="ku">Kenyatta University</option>
                             <option value="uon">University of Nairobi</option>
                             <option value="jkuat">JKUAT</option>
@@ -83,7 +83,7 @@ const SignUp = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-label" for="course">Course/Program</label>
-                        <input type="text" id="course" className="form-input" placeholder="e.g. Computer Science" onChange={handleChnge} value={form.course}  />
+                        <input type="text" id="course" className="form-input" placeholder="e.g. Computer Science" name='course' onChange={handleChnge} value={form.course}  />
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@ const SignUp = () => {
 
                 <div className="form-group">
                     <label className="form-label" for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" className="form-input" onChange={handleChnge} value={form.password}  placeholder="Re-enter your password" required />
+                    <input type="password" id="confirmPassword" className="form-input" name='password' onChange={handleChnge} value={form.password}  placeholder="Re-enter your password" required />
                 </div>
 
                 <button type="submit" className="signup-btn">Sign Up</button>
