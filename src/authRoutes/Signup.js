@@ -22,10 +22,9 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
         
         try {
-            const res = await signup(form);
+            await signup(form);
             navigate("/login")
         } catch (error) {
            console.error("Sign error", error)

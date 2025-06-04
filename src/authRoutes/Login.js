@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { login } from '../utils/authAPI';
 import "./auth.css"
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  return (
-    <div className="login-container">
+const navigate = useNavigate();
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleChnge = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+            const res = await login(form);
+            navigate("/");
+        } catch (error) {
+           console.error("Login error", error)
+           alert("Logging in up failed. Please try again") 
+        }
+    }
+    return (
+    <div className="login-container" onSubmit={handleSubmit}>
         <div className="login-header">
             <div className="logo-container">
                 <div className="logo">👥</div>
@@ -16,13 +40,13 @@ const Login = () => {
         <form className="login-form" id="loginForm">
             <div className="form-group">
                 <label className="form-label" for="email">Email Address</label>
-                <input type="email" id="email" className="form-input" placeholder="Enter your email" required />
+                <input type="email" id="email" onChange={handleChnge} name='email' className="form-input" placeholder="Enter your email" required />
             </div>
 
             <div className="form-group">
                 <label className="form-label" for="password">Password</label>
                 <div className="password-container">
-                    <input type="password" id="password" className="form-input" placeholder="Enter your password" required />
+                    <input type="password" id="password" name='password' onChange={handleChnge} className="form-input" placeholder="Enter your password" required />
                     <button type="button" className="password-toggle" id="passwordToggle">👁️</button>
                 </div>
             </div>
