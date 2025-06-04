@@ -1,10 +1,19 @@
 import { api } from "./axios";
 
-export const login = async (credentials) => {
-    const res = await api.post("/login", { credentials: true})
-}
+export const login = async (userInfo) => {
+    const res = await api.post("/login", userInfo, {
+  headers: {
+    "Content-Type": "application/json"
+  }
+})
+    return res;
+};
 
 export const signup = async (userInfo) => {
-    const res = await api.post("/signup", userInfo);
-    return res.data
-}
+    const res = await api.post("/signup", userInfo, {
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
+    return res;
+};

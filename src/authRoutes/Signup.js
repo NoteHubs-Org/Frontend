@@ -24,11 +24,18 @@ const SignUp = () => {
         e.preventDefault();
         
         try {
-            await signup(form);
-            navigate("/login")
+            const response = await signup(form);
+            if (response.status === 201) {
+                console.log("Sign up successful", response.data);
+                alert("Sign up successful");
+                navigate("/login");
+            } else {
+                console.error("Sign up failed", response.data);
+                alert("Sign up failed. Please check your details and try again.");
+            }
         } catch (error) {
-           console.error("Sign error", error)
-           alert("Sign up failed. Please try again") 
+            console.error("Sign up error", error);
+            alert("Sign up failed. Please try again");
         }
     }
     return (

@@ -3,7 +3,7 @@ import { FcDocument } from "react-icons/fc";
 import { GoFileDirectoryFill } from "react-icons/go";
 import { TbDeviceIpadQuestion } from "react-icons/tb";
 
-const Lib_Column = ({ docName, docTitle, type }) => {
+const LibColumn = ({ docName, docTitle, type }) => {
   let icon;
   if (type === 'doc') {
     icon = <FcDocument />;
@@ -22,4 +22,4 @@ const Lib_Column = ({ docName, docTitle, type }) => {
   );
 }
 
-export default Lib_Column;
+export default LibColumn;

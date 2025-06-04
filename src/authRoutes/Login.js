@@ -19,11 +19,18 @@ const navigate = useNavigate();
         e.preventDefault();
         
         try {
-            const res = await login(form);
-            navigate("/");
+            const response = await login(form);
+            if (response.status === 200) {
+                console.log("Login successful", response.data);
+                alert("Login successful");
+                navigate("/"); // Redirect to dashboard or home page
+            } else {
+                console.error("Login failed", response.data);
+                alert("Login failed. Please check your credentials and try again.");
+            }
         } catch (error) {
-           console.error("Login error", error)
-           alert("Logging in up failed. Please try again") 
+           console.error("Login error", error);
+           alert("Logging in failed. Please try again");
         }
     }
     return (
