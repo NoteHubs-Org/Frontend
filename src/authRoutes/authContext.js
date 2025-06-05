@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import authenticate from "./Authenticate.js";
+import authenticate from "../utils/Authenticate.js";
 
 const AuthContext = createContext();
 

@@ -9,7 +9,6 @@ import "./sidebar.css";
 
 const Sidebar = ({ isExpanded, toggleSidebar, toggleChat }) => {
   const [isHidden, setIsHidden] = useState(false);
-  const [activeTab, setActiveTab] = useState(false);
 
   const toggleHidden = () => {
     setIsHidden(!isHidden)
@@ -64,7 +63,7 @@ const Sidebar = ({ isExpanded, toggleSidebar, toggleChat }) => {
             <IoLibraryOutline className="nav_icon" />
             <span className="nav_name">My Library</span>
           </a>
-          <a href="#" onClick={toggleChat} className="nav_link" >
+          <a onClick={toggleChat} className="nav_link" >
             <MdOutlineGroups2 className="nav_icon" />
             <span className="nav_name">Groups</span>
           </a>
