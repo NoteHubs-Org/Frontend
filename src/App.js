@@ -8,6 +8,7 @@ import MyLibrary from "./pages/Library/MyLibrary";
 import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
+import UploadPage from "./pages/uploads/UploadPage";
 import AuthRoutes from "./authRoutes/AuthRoutes";
 import { AuthProvider } from "./authRoutes/authContext";
 import ProtectedLayout from "./authRoutes/ProtectedLayout";
@@ -38,7 +39,7 @@ function LayoutWrapper() {
       <Footer />
     </>
   );
-}
+};
 
 function App() {
   return (
@@ -51,11 +52,12 @@ function App() {
         <Route element={<ProtectedLayout />}>
           <Route path="/" element={<LayoutWrapper />} />
           <Route path="/library" element={<MyLibrary />} />
+          <Route path="/summarize" element={<UploadPage />} />
           {/* Add more protected routes here */}
         </Route>
       </Routes>
     </AuthProvider>
   );
-}
+};
 
 export default App;

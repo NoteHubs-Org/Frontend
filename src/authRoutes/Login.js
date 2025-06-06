@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { login } from '../utils/authAPI';
 import "./auth.css"
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-const navigate = useNavigate();
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -24,6 +24,7 @@ const navigate = useNavigate();
                 console.log("Login successful", response.data);
                 alert("Login successful");
                 navigate("/"); // Redirect to dashboard or home page
+                <Navigate to="/library" />
             } else {
                 console.error("Login failed", response.data);
                 alert("Login failed. Please check your credentials and try again.");
@@ -63,7 +64,7 @@ const navigate = useNavigate();
                     <div className="checkbox" id="rememberCheckbox">✓</div>
                     <label className="checkbox-label" for="rememberCheckbox">Remember me</label>
                 </div>
-                <a href="#" className="forgot-link">Forgot Password?</a>
+                <a href='/forgot-password' className="forgot-link">Forgot Password?</a>
             </div>
             
             <button type="submit" className="login-btn">Sign In</button>
