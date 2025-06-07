@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
-import LandPage from "./landingPage/LandPage";
 import Sidebar from "./landingPage/sidebar/Sidebar";
 import MyLibrary from "./pages/Library/MyLibrary";
 import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
 import ChatSlide from "./landingPage/chatSlider/ChatSlide";
 import UploadPage from "./pages/uploads/UploadPage";
+import Dashboard from "./landingPage/L_Body/Dashboard";
+import ChatUI from "./pages/chatAIPage/AIChat";
 import AuthRoutes from "./authRoutes/AuthRoutes";
 import { AuthProvider } from "./authRoutes/authContext";
 import ProtectedLayout from "./authRoutes/ProtectedLayout";
@@ -28,35 +29,43 @@ function LayoutWrapper() {
       <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
       {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
-      
-      <LandPage
-        isProfileVisible={isVisible}
-        toggleProfile={toggleProfile}
-        toggleSidebar={toggleSidebar}
-        isExpanded={isExpanded}
-      />
-      
+
+      {/* This replaces LandPage logic */}
+      <div className="main-content" style={{ minHeight: "80vh" }}>
+        <Outlet />
+      </div>
+
       <Footer />
     </>
   );
-};
+}
 
+
+function App() {
+  return (
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        {/* ✅ Public (unprotected) routes */}
+        {/* Public Routes */}
         <Route path="/*" element={<AuthRoutes />} />
 
-        {/* 🔐 Protected routes group */}
+        {/* Protected Routes */}
         <Route element={<ProtectedLayout />}>
-          <Route path="/" element={<LayoutWrapper />} />
-          <Route path="/library" element={<MyLibrary />} />
-          <Route path="/summarize" element={<UploadPage />} />
-          {/* Add more protected routes here */}
+          <Route element={<LayoutWrapper />}>
+            <Route index element={<Dashboard />} />
+            <Route path="summarize" element={<UploadPage />} />
+            <Route path="noteai" element={<ChatUI />} />
+            <Route path="groups" element={<Dashboard />} />
+            <Route path="QAs" element={<Dashboard />} />
+            <Route path="library" element={<MyLibrary />} />
+          </Route>
         </Route>
       </Routes>
     </AuthProvider>
+  );
+}
+
   );
 };
 

@@ -4,6 +4,7 @@ import { FaFileAlt, FaRobot, FaUsers } from "react-icons/fa";
 import { PiChatsCircle } from "react-icons/pi";
 import assets from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
+import StudyDashboard from "./DashPage"; 
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Dashboard = () => {
           <p>Fast PDF to Word, Excel, PPT, and more—effortless and accurate!</p>
         </div>
       </div>
+      <StudyDashboard />
       <div className="recent-mess">
         <h4>Recent messages in your chats</h4>
         <div className="rec-div">
