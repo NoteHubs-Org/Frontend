@@ -40,9 +40,6 @@ function LayoutWrapper() {
   );
 }
 
-
-function App() {
-  return (
 function App() {
   return (
     <AuthProvider>
@@ -66,7 +63,5 @@ function App() {
   );
 }
 
-  );
-};
 
 export default App;
