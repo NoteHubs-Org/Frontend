@@ -4,7 +4,6 @@
   margin-top: 72px;
   margin-left: 70px;
   border :100px black;
-  padding: 10px;
   display: flex;
   transition: margin-left 0.2s ease; 
 }

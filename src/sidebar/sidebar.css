@@ -7,10 +7,11 @@
   height: 100%;
   padding-top: 10px;
   padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 10px solid transparent;
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
   background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
   transition: all 0.2s ease;
   font-family: 'Nunito', sans-serif;
@@ -133,10 +134,17 @@
 }
 
 .nav_name {
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav_item.expanded .nav_name {
+  display: inline;
   font-size: 16px;
   white-space: nowrap;
   margin-left: 16px;
 }
+
 .popup-div{
   position: fixed;
   display: flex;

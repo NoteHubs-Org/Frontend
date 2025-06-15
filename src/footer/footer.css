@@ -1,7 +1,9 @@
 .footer {
   background: #f8f9fa;
   padding: 40px 5%;
+  margin-left: 70px;
   font-family: Arial, sans-serif;
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
   width: 95%; 
 }
 

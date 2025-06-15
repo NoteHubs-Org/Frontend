@@ -18,6 +18,7 @@
 .section-header {
   display: flex;
   align-items: center;
+  width: 100%;
   gap: 16px;
   border-bottom: 2px solid #e2e8f0;
 }
@@ -25,6 +26,7 @@
   font-size: 32px;
   font-weight: 800;
   background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  padding-left: 20px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

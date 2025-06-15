@@ -7,6 +7,31 @@ body {
   font-weight: 300;
   margin: 0;
   height: 100%;
-  width: 100%;
+  width: 90%;
   box-sizing: border-box;
+}
+/* Target the scrollbar track */
+::-webkit-scrollbar {
+  width: 8px;       /* Vertical scrollbar width */
+}
+
+::-webkit-scrollbar:hover{
+  width: 8px;
+}
+
+/* Background of the scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
