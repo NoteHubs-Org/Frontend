@@ -1,3 +1,16 @@
+.main-dashbody{
+  height: calc(100vh - 80px);
+  width: 100%;
+  display: flex;
+  margin-top: 72px;
+}
+.dash-body-left{
+  max-width: 280px;
+}
+.dash-body-right{
+  flex: 1;
+  overflow: auto;
+}
 .dashboard-container {
   display: flex;
   flex-wrap: wrap;

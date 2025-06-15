@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
-import Sidebar from "./landingPage/sidebar/Sidebar";
 import MyLibrary from "./pages/Library/MyLibrary";
 import Footer from "./footer/Footer";
 import Profile from "./header/Profile";
@@ -14,24 +13,16 @@ import AuthRoutes from "./authRoutes/AuthRoutes";
 import { AuthProvider } from "./authRoutes/authContext";
 import ProtectedLayout from "./authRoutes/ProtectedLayout";
 
-function LayoutWrapper() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isChatVisible, setIsChatVisible] = useState(false);
-
-  const toggleChat = () => setIsChatVisible(!isChatVisible);
-  const toggleProfile = () => setIsVisible(!isVisible);
-  const toggleSidebar = () => setIsExpanded(!isExpanded);
+function LayoutWrapper({ toggleProfile, isVisible, isChatVisible, toggleChat }) {
 
   return (
     <>
       <Header toggleProfile={toggleProfile} toggleChat={toggleChat} />
-      <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} />
       <Profile isOpen={isVisible} toggleProfile={toggleProfile} />
       {isChatVisible && <ChatSlide toggleChat={toggleChat} />}
 
       {/* This replaces LandPage logic */}
-      <div className="main-content" style={{ minHeight: "80vh" }}>
+      <div className="main-content">
         <Outlet />
       </div>
 
@@ -41,6 +32,13 @@ function LayoutWrapper() {
 }
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  
+  const toggleChat = () => setIsChatVisible(!isChatVisible);
+  const toggleProfile = () => setIsVisible(!isVisible);
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
   return (
     <AuthProvider>
       <Routes>
@@ -49,8 +47,10 @@ function App() {
 
         {/* Protected Routes */}
         <Route element={<ProtectedLayout />}>
-          <Route element={<LayoutWrapper />}>
-            <Route index element={<Dashboard />} />
+          <Route element={<LayoutWrapper 
+              toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat}
+          />}>
+            <Route index element={<Dashboard toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat}/>} />
             <Route path="summarize" element={<UploadPage />} />
             <Route path="noteai" element={<ChatUI />} />
             <Route path="groups" element={<Dashboard />} />

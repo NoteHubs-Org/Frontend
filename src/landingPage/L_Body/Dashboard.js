@@ -2,63 +2,70 @@ import React from "react";
 import "./dashboard.css";
 import { FaFileAlt, FaRobot, FaUsers } from "react-icons/fa";
 import { PiChatsCircle } from "react-icons/pi";
+import Sidebar from "../sidebar/Sidebar";
 import assets from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
-import StudyDashboard from "./DashPage"; 
+// import StudyDashboard from "./DashPage"; 
 
-const Dashboard = () => {
+const Dashboard = ({ toggleSidebar, isExpanded, toggleChat }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="dash-body">
-      <div class="section-header">
-        <h1 class="section-title">Welcome to NoteHubs</h1>
-        <span class="section-badge">Education Platform</span>
+    <div className="main-dashbody">
+      <div className="dash-body-left">
+        <Sidebar toggleSidebar={toggleSidebar} isExpanded={isExpanded} toggleChat={toggleChat} />
       </div>
-      <div className="dashboard-container">
-        {/* ChatPDF Feature */}
-        <div onClick={() => navigate("/summarize")} className="feature-card chatpdf">
-          <div className="feature-icon"><FaFileAlt  /></div>
-          <h4>Summarize Documents</h4>
-          <p>Use ChatPDF to generate summaries & extract key points.</p>
+      <div className="dash-body-right">
+        <div className="section-header">
+          <h1 className="section-title">Welcome to NoteHubs</h1>
+          <span className="section-badge">Education Platform</span>
         </div>
+        <div className="dashboard-container">
+          {/* ChatPDF Feature */}
+          <div onClick={() => navigate("/summarize")} className="feature-card chatpdf">
+            <div className="feature-icon"><FaFileAlt  /></div>
+            <h4>Summarize Documents</h4>
+            <p>Use ChatPDF to generate summaries & extract key points.</p>
+          </div>
+          
 
-        {/* Brainy Assistant Feature */}
-        <div onClick={() => navigate("/NoteAI")} className="feature-card brainy">
-          <div className="feature-icon" ><FaRobot /></div>
-          <h4>Ask Brainy</h4>
-          <p>Get instant answers & smart study insights.</p>
-        </div>
+          {/* Brainy Assistant Feature */}
+          <div onClick={() => navigate("/NoteAI")} className="feature-card brainy">
+            <div className="feature-icon" ><FaRobot /></div>
+            <h4>Ask Brainy</h4>
+            <p>Get instant answers & smart study insights.</p>
+          </div>
 
-        {/* Study Hubs Feature */}
-        <div className="feature-card study-hubs">
-          <div className="feature-icon" ><FaUsers /></div>
-          <h4>Explore Study Hubs</h4>
-          <p>Join study groups & collaborate with peers.</p>
+          {/* Study Hubs Feature */}
+          <div className="feature-card study-hubs">
+            <div className="feature-icon" ><FaUsers /></div>
+            <h4>Explore Study Hubs</h4>
+            <p>Join study groups & collaborate with peers.</p>
+          </div>
+          <div className="feature-card chatpdf">
+            <div className="feature-icon" >< FaFileAlt /></div>
+            <h4>Convert Documents</h4>
+            <p>Fast PDF to Word, Excel, PPT, and more—effortless and accurate!</p>
+          </div>
         </div>
-        <div className="feature-card chatpdf">
-          <div className="feature-icon" >< FaFileAlt /></div>
-          <h4>Convert Documents</h4>
-          <p>Fast PDF to Word, Excel, PPT, and more—effortless and accurate!</p>
+        {/* <StudyDashboard /> */}
+        <div className="recent-mess">
+          <h4>Recent messages in your chats</h4>
+          <div className="rec-div">
+            <div>
+              <p><span>Start conversation</span> in your chats and follow courses to <span>get resources</span></p>
+              <button className="chats-btn">
+                <PiChatsCircle className="btn-icon" />
+                Open Chats
+              </button>
+            </div>
+            <div className="image-content">
+              <img src={assets.svgimg} alt=""/>
+            </div>
+            </div>
+        </div>
         </div>
       </div>
-      <StudyDashboard />
-      <div className="recent-mess">
-        <h4>Recent messages in your chats</h4>
-        <div className="rec-div">
-          <div>
-            <p><span>Start conversation</span> in your chats and follow courses to <span>get resources</span></p>
-            <button className="chats-btn">
-              <PiChatsCircle className="btn-icon" />
-              Open Chats
-            </button>
-          </div>
-          <div className="image-content">
-            <img src={assets.svgimg} alt=""/>
-          </div>
-          </div>
-      </div>
-    </div>
   );
 };
 
