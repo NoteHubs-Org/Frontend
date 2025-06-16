@@ -79,148 +79,6 @@ const StudyDashboard = () => {
     }
   };
 
-  const styles = {
-    cardTitle: {
-      fontSize: '16px',
-      fontWeight: '500',
-      color: '#1f2937',
-      marginBottom: '8px',
-      lineHeight: '1.4',
-      overflow: 'hidden',
-      display: '-webkit-box',
-      WebkitLineClamp: 2,
-      WebkitBoxOrient: 'vertical'
-    },
-    cardDescription: {
-      fontSize: '14px',
-      color: '#6b7280',
-      marginBottom: '12px',
-      lineHeight: '1.4',
-      overflow: 'hidden',
-      display: '-webkit-box',
-      WebkitLineClamp: 2,
-      WebkitBoxOrient: 'vertical'
-    },
-    cardMeta: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      fontSize: '14px',
-      color: '#6b7280',
-      marginBottom: '12px'
-    },
-    progressBar: {
-      width: '100%',
-      height: '8px',
-      backgroundColor: '#e5e7eb',
-      borderRadius: '4px',
-      overflow: 'hidden'
-    },
-    progressFill: {
-      height: '100%',
-      backgroundColor: '#2563eb',
-      borderRadius: '4px',
-      transition: 'width 0.3s ease'
-    },
-    progressText: {
-      fontSize: '12px',
-      color: '#6b7280',
-      marginTop: '4px'
-    },
-    badge: {
-      padding: '4px 8px',
-      borderRadius: '12px',
-      fontSize: '12px',
-      fontWeight: '500'
-    },
-    newBadge: {
-      fontSize: '12px',
-      color: '#16a34a',
-      backgroundColor: '#dcfce7',
-      padding: '4px 8px',
-      borderRadius: '12px',
-      fontWeight: '500'
-    },
-    trendBadge: {
-      fontSize: '14px',
-      fontWeight: '500',
-      color: '#16a34a',
-      backgroundColor: '#f0fdf4',
-      padding: '4px 8px',
-      borderRadius: '4px'
-    },
-    button: {
-      width: '100%',
-      padding: '8px 16px',
-      borderRadius: '8px',
-      border: 'none',
-      cursor: 'pointer',
-      fontSize: '14px',
-      fontWeight: '500',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      transition: 'background-color 0.2s ease'
-    },
-    primaryButton: {
-      backgroundColor: '#7c3aed',
-      color: '#ffffff'
-    },
-    primaryButtonHover: {
-      backgroundColor: '#6d28d9'
-    },
-    secondaryButton: {
-      backgroundColor: '#16a34a',
-      color: '#ffffff'
-    },
-    secondaryButtonHover: {
-      backgroundColor: '#15803d'
-    },
-    outlineButton: {
-      backgroundColor: 'transparent',
-      color: '#374151',
-      border: '1px solid #d1d5db'
-    },
-    outlineButtonHover: {
-      backgroundColor: '#f9fafb'
-    },
-    smallButton: {
-      padding: '4px 12px',
-      fontSize: '12px',
-      width: 'auto'
-    },
-    iconButton: {
-      color: '#2563eb',
-      textDecoration: 'none',
-      fontWeight: '500',
-      fontSize: '14px'
-    },
-    statsGrid: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '8px'
-    },
-    statRow: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      fontSize: '14px'
-    },
-    statLabel: {
-      color: '#6b7280'
-    },
-    statValue: {
-      fontWeight: '500',
-      color: '#1f2937'
-    },
-    ratingContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '4px'
-    }
-  };
-
   return (
     <div className='container'>
       {/* Recently Viewed Section */}
@@ -230,7 +88,7 @@ const StudyDashboard = () => {
             <Clock size={24} color="#2563eb" />
             <h2 className='section-title-text'>Recently Viewed</h2>
           </div>
-          <a href="#" style={styles.iconButton}>View All</a>
+          <a href="#" className='icon-button'>View All</a>
         </div>
         <div className='section-content'>
           <div className='grid'>
@@ -238,29 +96,28 @@ const StudyDashboard = () => {
               <div 
                 key={item.id} 
                 className='card'
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
                 onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
-                <div style={styles.cardHeader}>
-                  <div style={styles.courseLabel}>
+                <div className='card-header'>
+                  <div className='course-label'>
                     {getTypeIcon(item.type)}
                     <span>{item.course}</span>
                   </div>
                   <Eye size={16} color="#9ca3af" />
                 </div>
-                <h3 style={styles.cardTitle}>{item.title}</h3>
-                <div style={styles.cardMeta}>
+                <h3 className='card-title'>{item.title}</h3>
+                <div className='card-meta'>
                   <span>{item.lastViewed}</span>
                 </div>
-                <div style={styles.progressBar}>
+                <div className='progress-bar'>
                   <div 
+                    className='progress-fill'
                     style={{
-                      ...styles.progressFill,
                       width: `${item.progress}%`
                     }}
                   ></div>
                 </div>
-                <div style={styles.progressText}>{item.progress}% complete</div>
+                <div className='progress-text'>{item.progress}% complete</div>
               </div>
             ))}
           </div>
@@ -282,28 +139,24 @@ const StudyDashboard = () => {
               <div 
                 key={quiz.id} 
                 className='card'
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <Brain size={20} color="#7c3aed" />
-                  <span style={{ ...styles.badge, ...getDifficultyStyle(quiz.difficulty) }}>
+                  <span className='badge' style={{  ...getDifficultyStyle(quiz.difficulty) }}>
                     {quiz.difficulty}
                   </span>
                 </div>
-                <h3 style={styles.cardTitle}>{quiz.title}</h3>
-                <p style={styles.cardDescription}>{quiz.description}</p>
-                <div style={styles.cardMeta}>
+                <h3 className='card-title'>{quiz.title}</h3>
+                <p className='card-description'>{quiz.description}</p>
+                <div className='card-meta'>
                   <span>{quiz.questions} questions</span>
-                  <div style={styles.ratingContainer}>
+                  <div className='rating-container'>
                     <Star size={12} fill="#fbbf24" color="#fbbf24" />
                     <span>{quiz.rating}</span>
                   </div>
                 </div>
                 <button 
-                  style={{ ...styles.button, ...styles.primaryButton }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = styles.primaryButtonHover.backgroundColor}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = styles.primaryButton.backgroundColor}
+                  className='button primary-button'
                 >
                   <Play size={16} />
                   Start Quiz
@@ -319,29 +172,28 @@ const StudyDashboard = () => {
         <div className='section-header'>
           <div className='section-title'>
             <FileText size={24} color="#16a34a" />
-            <h2 style={styles.sectionTitleText}>New Documents in Your Courses</h2>
+            <h2 className='section-title-text'>New Documents in Your Courses</h2>
           </div>
-          <a href="#" style={{ ...styles.iconButton, color: '#16a34a' }}>View All</a>
+          <a href="#" className='icon-button' style={{ color: '#16a34a' }}>View All</a>
         </div>
         <div className='section-content'>
-          <div style={styles.grid}>
+          <div className='grid'>
             {newDocuments.map((doc) => (
               <div 
                 key={doc.id} 
                 className='card'
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
                 <div className='card-header'>
-                  <div className='course-label' style={{ ...styles.courseLabel, color: '#16a34a' }}>
+                  <div className='course-label' style={{
+                     color: '#16a34a' }}>
                     <FileText size={16} />
                     <span>{doc.course}</span>
                   </div>
-                  <span style={styles.newBadge}>New</span>
+                  <span className='new-badge'>New</span>
                 </div>
-                <h3 style={styles.cardTitle}>{doc.title}</h3>
+                <h3 className='card-title'>{doc.title}</h3>
                 <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>by {doc.author}</p>
-                <div style={styles.cardMeta}>
+                <div className='card-meta'>
                   <span>{doc.uploadDate}</span>
                   <span>{doc.pages} pages</span>
                 </div>
@@ -351,9 +203,7 @@ const StudyDashboard = () => {
                     <span>{doc.downloads}</span>
                   </div>
                   <button 
-                    style={{ ...styles.button, ...styles.secondaryButton, ...styles.smallButton }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = styles.secondaryButtonHover.backgroundColor}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = styles.secondaryButton.backgroundColor}
+                    className='button small-button secondary-button'
                   >
                     View
                   </button>
@@ -369,46 +219,43 @@ const StudyDashboard = () => {
         <div className='section-header'>
           <div className='section-title'>
             <TrendingUp size={24} color="#ea580c" />
-            <h2 style={styles.sectionTitleText}>Trending in Your Courses</h2>
+            <h2 className='section-title-text'>Trending in Your Courses</h2>
           </div>
           <ChevronRight size={20} color="#9ca3af" />
         </div>
         <div className='section-content'>
-          <div style={styles.gridLarge}>
+          <div className='grid-large'>
             {trendingCourses.map((course) => (
               <div 
                 key={course.id} 
+                className='card'
                 style={{
-                  ...styles.card,
                   backgroundColor: getCardBackgroundColor(course.color),
                   borderColor: getCardBorderColor(course.color),
                   borderWidth: '2px'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <BookOpen size={20} color="#6b7280" />
-                  <span style={styles.trendBadge}>
+                  <span className='trend-badge'>
                     {course.trend}
                   </span>
                 </div>
-                <h3 style={{ ...styles.cardTitle, fontWeight: '600' }}>{course.title}</h3>
+                <h3 className='card-title' style={{  fontWeight: '600' }}>{course.title}</h3>
                 <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '12px' }}>{course.code}</p>
-                <div style={styles.statsGrid}>
-                  <div style={styles.statRow}>
-                    <span style={styles.statLabel}>Documents</span>
-                    <span style={styles.statValue}>{course.documents.toLocaleString()}</span>
+                <div className='stats-grid'>
+                  <div className='stat-row'>
+                    <span className='stat-lagel'>Documents</span>
+                    <span className='stat-value'>{course.documents.toLocaleString()}</span>
                   </div>
-                  <div style={styles.statRow}>
-                    <span style={styles.statLabel}>Students</span>
-                    <span style={styles.statValue}>{course.students.toLocaleString()}</span>
+                  <div className='stat-row'>
+                    <span className='stat-label'>Students</span>
+                    <span className='stat-value'>{course.students.toLocaleString()}</span>
                   </div>
                 </div>
                 <button 
-                  style={{ ...styles.button, ...styles.outlineButton, marginTop: '16px' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = styles.outlineButtonHover.backgroundColor}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                className='button online-button'
+                  style={{ marginTop: '16px' }}
                 >
                   <Plus size={16} />
                   Follow

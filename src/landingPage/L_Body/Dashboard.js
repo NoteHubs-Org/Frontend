@@ -43,9 +43,9 @@ const Dashboard = () => {
           <p>Fast PDF to Word, Excel, PPT, and more—effortless and accurate!</p>
         </div>
       </div>
-      {/* <div>
+      <div>
         <StudyDashboard />
-      </div> */}
+      </div>
       <div className="recent-mess">
         <h4>Recent messages in your chats</h4>
         <div className="rec-div">
