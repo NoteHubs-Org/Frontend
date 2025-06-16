@@ -9,6 +9,7 @@ body {
   height: 100%;
   width: 90%;
   box-sizing: border-box;
+  display: grid;
 }
 /* Target the scrollbar track */
 ::-webkit-scrollbar {

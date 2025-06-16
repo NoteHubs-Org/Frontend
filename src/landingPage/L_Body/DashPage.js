@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import "./dashpage.css";
 import { 
   BookOpen, 
-  Users, 
   FileText, 
   Brain, 
   Clock, 
@@ -11,7 +11,7 @@ import {
   Star,
   Play,
   Eye,
-  Download
+  Download,
 } from 'lucide-react';
 
 const StudyDashboard = () => {
@@ -80,76 +80,6 @@ const StudyDashboard = () => {
   };
 
   const styles = {
-    container: {
-      maxWidth: '1280px',
-      margin: '0 auto',
-      padding: '24px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '32px'
-    },
-    section: {
-      backgroundColor: '#ffffff',
-      borderRadius: '12px',
-      boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-      border: '1px solid #e5e7eb'
-    },
-    sectionHeader: {
-      padding: '24px',
-      borderBottom: '1px solid #f3f4f6',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between'
-    },
-    sectionTitle: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '12px'
-    },
-    sectionTitleText: {
-      fontSize: '20px',
-      fontWeight: '600',
-      color: '#1f2937',
-      margin: 0
-    },
-    sectionContent: {
-      padding: '24px'
-    },
-    grid: {
-      display: 'grid',
-      gap: '16px',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))'
-    },
-    gridLarge: {
-      display: 'grid',
-      gap: '16px',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))'
-    },
-    card: {
-      border: '1px solid #e5e7eb',
-      borderRadius: '8px',
-      padding: '16px',
-      cursor: 'pointer',
-      transition: 'box-shadow 0.2s ease',
-      backgroundColor: '#ffffff'
-    },
-    cardHover: {
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-    },
-    cardHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      marginBottom: '12px'
-    },
-    courseLabel: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-      color: '#6b7280',
-      fontSize: '14px',
-      fontWeight: '500'
-    },
     cardTitle: {
       fontSize: '16px',
       fontWeight: '500',
@@ -292,22 +222,22 @@ const StudyDashboard = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className='container'>
       {/* Recently Viewed Section */}
-      <section style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div style={styles.sectionTitle}>
+      <section className='section'>
+        <div className='section-header'>
+          <div className='section-title'>
             <Clock size={24} color="#2563eb" />
-            <h2 style={styles.sectionTitleText}>Recently Viewed</h2>
+            <h2 className='section-title-text'>Recently Viewed</h2>
           </div>
           <a href="#" style={styles.iconButton}>View All</a>
         </div>
-        <div style={styles.sectionContent}>
-          <div style={styles.grid}>
+        <div className='section-content'>
+          <div className='grid'>
             {recentlyViewed.map((item) => (
               <div 
                 key={item.id} 
-                style={styles.card}
+                className='card'
                 onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
                 onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
@@ -338,20 +268,20 @@ const StudyDashboard = () => {
       </section>
 
       {/* Best Quizzes Section */}
-      <section style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div style={styles.sectionTitle}>
+      <section className='section'>
+        <div className='section-header'>
+          <div className='section-title'>
             <Brain size={24} color="#7c3aed" />
-            <h2 style={styles.sectionTitleText}>Best Quizzes for You</h2>
+            <h2 className='section-title-text'>Best Quizzes for You</h2>
           </div>
           <ChevronRight size={20} color="#9ca3af" />
         </div>
-        <div style={styles.sectionContent}>
-          <div style={styles.gridLarge}>
+        <div className='section-content'>
+          <div className='grid-large'>
             {bestQuizzes.map((quiz) => (
               <div 
                 key={quiz.id} 
-                style={styles.card}
+                className='card'
                 onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
                 onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
@@ -385,25 +315,25 @@ const StudyDashboard = () => {
       </section>
 
       {/* New Documents Section */}
-      <section style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div style={styles.sectionTitle}>
+      <section className='section'>
+        <div className='section-header'>
+          <div className='section-title'>
             <FileText size={24} color="#16a34a" />
             <h2 style={styles.sectionTitleText}>New Documents in Your Courses</h2>
           </div>
           <a href="#" style={{ ...styles.iconButton, color: '#16a34a' }}>View All</a>
         </div>
-        <div style={styles.sectionContent}>
+        <div className='section-content'>
           <div style={styles.grid}>
             {newDocuments.map((doc) => (
               <div 
                 key={doc.id} 
-                style={styles.card}
+                className='card'
                 onMouseEnter={(e) => e.currentTarget.style.boxShadow = styles.cardHover.boxShadow}
                 onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
               >
-                <div style={styles.cardHeader}>
-                  <div style={{ ...styles.courseLabel, color: '#16a34a' }}>
+                <div className='card-header'>
+                  <div className='course-label' style={{ ...styles.courseLabel, color: '#16a34a' }}>
                     <FileText size={16} />
                     <span>{doc.course}</span>
                   </div>
@@ -435,15 +365,15 @@ const StudyDashboard = () => {
       </section>
 
       {/* Trending Courses Section */}
-      <section style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div style={styles.sectionTitle}>
+      <section className='section'>
+        <div className='section-header'>
+          <div className='section-title'>
             <TrendingUp size={24} color="#ea580c" />
             <h2 style={styles.sectionTitleText}>Trending in Your Courses</h2>
           </div>
           <ChevronRight size={20} color="#9ca3af" />
         </div>
-        <div style={styles.sectionContent}>
+        <div className='section-content'>
           <div style={styles.gridLarge}>
             {trendingCourses.map((course) => (
               <div 
