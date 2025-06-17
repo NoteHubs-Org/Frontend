@@ -20,7 +20,9 @@ const StudyDashboard = () => {
     { id: 1, title: "Organic Chemistry Notes", type: "document", course: "SCH 2103", lastViewed: "2 hours ago", progress: 75 },
     { id: 2, title: "Civil Code Quiz", type: "quiz", course: "Law 101", lastViewed: "1 day ago", progress: 100 },
     { id: 3, title: "Computer Systems Intro", type: "document", course: "CS 101", lastViewed: "3 days ago", progress: 45 },
-    { id: 4, title: "Medical Biochemistry", type: "quiz", course: "BMB 1203", lastViewed: "5 days ago", progress: 90 }
+    { id: 4, title: "Medical Biochemistry", type: "quiz", course: "BMB 1203", lastViewed: "5 days ago", progress: 90 },
+    { id: 4, title: "Medical Biochemistry", type: "quiz", course: "BMB 1203", lastViewed: "5 days ago", progress: 90 },
+    { id: 4, title: "Medical Biochemistry", type: "quiz", course: "BMB 1203", lastViewed: "5 days ago", progress: 90 },
   ]);
 
   const [bestQuizzes] = useState([
@@ -91,36 +93,41 @@ const StudyDashboard = () => {
           <a href="#" className='icon-button'>View All</a>
         </div>
         <div className='section-content'>
-          <div className='grid'>
-            {recentlyViewed.map((item) => (
-              <div 
-                key={item.id} 
-                className='card'
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
-              >
-                <div className='card-header'>
-                  <div className='course-label'>
-                    {getTypeIcon(item.type)}
-                    <span>{item.course}</span>
-                  </div>
-                  <Eye size={16} color="#9ca3af" />
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          <div className='card'>Card 1</div>
+          {/* {recentlyViewed.map((item) => (
+            <div 
+              key={item.id} 
+              className='card'
+              onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
+            >
+              <div className='card-header'>
+                <div className='course-label'>
+                  {getTypeIcon(item.type)}
+                  <span>{item.course}</span>
                 </div>
-                <h3 className='card-title'>{item.title}</h3>
-                <div className='card-meta'>
-                  <span>{item.lastViewed}</span>
-                </div>
-                <div className='progress-bar'>
-                  <div 
-                    className='progress-fill'
-                    style={{
-                      width: `${item.progress}%`
-                    }}
-                  ></div>
-                </div>
-                <div className='progress-text'>{item.progress}% complete</div>
+                <Eye size={16} color="#9ca3af" />
               </div>
-            ))}
-          </div>
+              <h3 className='card-title'>{item.title}</h3>
+              <div className='card-meta'>
+                <span>{item.lastViewed}</span>
+              </div>
+              <div className='progress-bar'>
+                <div 
+                  className='progress-fill'
+                  style={{
+                    width: `${item.progress}%`
+                  }}
+                ></div>
+              </div>
+              <div className='progress-text'>{item.progress}% complete</div>
+            </div>
+          ))} */}
         </div>
       </section>
 
