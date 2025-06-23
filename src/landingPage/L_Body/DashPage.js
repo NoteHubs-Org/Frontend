@@ -26,11 +26,11 @@ const StudyDashboard = () => {
   ]);
 
   const [bestQuizzes] = useState([
-    { id: 1, title: "Organic chem Notes", description: "Test your knowledge of organic chemistry fundamentals", difficulty: "Medium", questions: 25, rating: 4.8 },
-    { id: 2, title: "BMB 1203 Medical Biochemistry II", description: "Advanced biochemistry concepts for nursing students", difficulty: "Hard", questions: 30, rating: 4.9 },
-    { id: 3, title: "Medical-surgical-nursing", description: "Comprehensive nursing practice questions", difficulty: "Medium", questions: 40, rating: 4.7 },
-    { id: 4, title: "Human anatomy 1 for nursing students", description: "Essential anatomy knowledge for healthcare", difficulty: "Easy", questions: 20, rating: 4.6 },
-    { id: 5, title: "MIDWIFERY PRACTICUM NOTES", description: "Practical midwifery skills and knowledge", difficulty: "Hard", questions: 35, rating: 4.8 }
+    { id: 1, title: "Organic chem Notes", descrip: "Test your knowledge of organic chemistry fundamentals", difficulty: "Medium", quess: 25, rating: 4.8 },
+    { id: 2, title: "BMB 1203 Medical Biochemistry II", descrip: "Advanced biochemistry concepts for nursing students", difficulty: "Hard", quess: 30, rating: 4.9 },
+    { id: 3, title: "Medical-surgical-nursing", descrip: "Comprehensive nursing practice quess", difficulty: "Medium", quess: 40, rating: 4.7 },
+    { id: 4, title: "Human anatomy 1 for nursing students", descrip: "Essential anatomy knowledge for healthcare", difficulty: "Easy", quess: 20, rating: 4.6 },
+    { id: 5, title: "MIDWIFERY PRACTICUM NOTES", descrip: "Practical midwifery skills and knowledge", difficulty: "Hard", quess: 35, rating: 4.8 }
   ]);
 
   const [newDocuments] = useState([
@@ -44,8 +44,8 @@ const StudyDashboard = () => {
     { id: 1, title: "Organic Chemistry", code: "SCH 2103", documents: 17, trend: "+15%", students: 1250, color: "green" },
     { id: 2, title: "Awino", code: "pennings omondi", documents: 20, trend: "+12%", students: 890, color: "orange" },
     { id: 3, title: "The Civil Code of the Province", code: "Quebec", documents: 522, trend: "+8%", students: 2100, color: "purple" },
-    { id: 4, title: "Introduction to computer systems", code: "CS 101", documents: 127, trend: "+6%", students: 1650, color: "green" },
-    { id: 5, title: "ISBN - International Standard Book", code: "Walravens", documents: 7956, trend: "+22%", students: 3200, color: "blue" }
+    { id: 4, title: "Introduc to computer systems", code: "CS 101", documents: 127, trend: "+6%", students: 1650, color: "green" },
+    { id: 5, title: "ISBN - Internaal Standard Book", code: "Walravens", documents: 7956, trend: "+22%", students: 3200, color: "blue" }
   ]);
 
   const getDifficultyStyle = (difficulty) => {
@@ -82,25 +82,18 @@ const StudyDashboard = () => {
   };
 
   return (
-    <div className='container'>
-      {/* Recently Viewed Section */}
-      <section className='section'>
-        <div className='section-header'>
-          <div className='section-title'>
+    <div className='dash-container'>
+      {/* Recently Viewed Sec */}
+      <sec className='sec'>
+        <div className='sec-header'>
+          <div className='sec-title'>
             <Clock size={24} color="#2563eb" />
-            <h2 className='section-title-text'>Recently Viewed</h2>
+            <h2 className='sec-title-text'>Recently Viewed</h2>
           </div>
           <a href="#" className='icon-button'>View All</a>
         </div>
-        <div className='section-content'>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          <div className='card'>Card 1</div>
-          {/* {recentlyViewed.map((item) => (
+        <div className='sec-content'>
+          {recentlyViewed.map((item) => (
             <div 
               key={item.id} 
               className='card'
@@ -127,111 +120,106 @@ const StudyDashboard = () => {
               </div>
               <div className='progress-text'>{item.progress}% complete</div>
             </div>
-          ))} */}
+          ))}
         </div>
-      </section>
+      </sec>
 
-      {/* Best Quizzes Section */}
-      <section className='section'>
-        <div className='section-header'>
-          <div className='section-title'>
+      {/* Best Quizzes Sec */}
+      <sec className='sec'>
+        <div className='sec-header'>
+          <div className='sec-title'>
             <Brain size={24} color="#7c3aed" />
-            <h2 className='section-title-text'>Best Quizzes for You</h2>
+            <h2 className='sec-title-text'>Best Quizzes for You</h2>
           </div>
-          <ChevronRight size={20} color="#9ca3af" />
+          <ChevronRight className="next-btn"  size={20} color="#9ca3af" />
         </div>
-        <div className='section-content'>
-          <div className='grid-large'>
-            {bestQuizzes.map((quiz) => (
-              <div 
-                key={quiz.id} 
-                className='card'
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                  <Brain size={20} color="#7c3aed" />
-                  <span className='badge' style={{  ...getDifficultyStyle(quiz.difficulty) }}>
-                    {quiz.difficulty}
-                  </span>
-                </div>
-                <h3 className='card-title'>{quiz.title}</h3>
-                <p className='card-description'>{quiz.description}</p>
-                <div className='card-meta'>
-                  <span>{quiz.questions} questions</span>
-                  <div className='rating-container'>
-                    <Star size={12} fill="#fbbf24" color="#fbbf24" />
-                    <span>{quiz.rating}</span>
-                  </div>
-                </div>
-                <button 
-                  className='button primary-button'
-                >
-                  <Play size={16} />
-                  Start Quiz
-                </button>
+        <div className='sec-content'>
+          {bestQuizzes.map((quiz) => (
+            <div 
+              key={quiz.id} 
+              className='card'
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <Brain size={20} color="#7c3aed" />
+                <span className='badge' style={{  ...getDifficultyStyle(quiz.difficulty) }}>
+                  {quiz.difficulty}
+                </span>
               </div>
-            ))}
+              <h3 className='card-title'>{quiz.title}</h3>
+              <p className='card-descrip'>{quiz.descrip}</p>
+              <div className='card-meta'>
+                <span>{quiz.quess} quess</span>
+                <div className='rating-container'>
+                  <Star size={12} fill="#fbbf24" color="#fbbf24" />
+                  <span>{quiz.rating}</span>
+                </div>
+              </div>
+              <button 
+                className='button primary-button'
+              >
+                <Play size={16} />
+                Start Quiz
+              </button>
+            </div>
+          ))}
           </div>
-        </div>
-      </section>
+      </sec>
 
-      {/* New Documents Section */}
-      <section className='section'>
-        <div className='section-header'>
-          <div className='section-title'>
+      {/* New Documents Sec */}
+      <sec className='sec'>
+        <div className='sec-header'>
+          <div className='sec-title'>
             <FileText size={24} color="#16a34a" />
-            <h2 className='section-title-text'>New Documents in Your Courses</h2>
+            <h2 className='sec-title-text'>New Documents in Your Courses</h2>
           </div>
           <a href="#" className='icon-button' style={{ color: '#16a34a' }}>View All</a>
         </div>
-        <div className='section-content'>
-          <div className='grid'>
-            {newDocuments.map((doc) => (
-              <div 
-                key={doc.id} 
-                className='card'
-              >
-                <div className='card-header'>
-                  <div className='course-label' style={{
-                     color: '#16a34a' }}>
-                    <FileText size={16} />
-                    <span>{doc.course}</span>
-                  </div>
-                  <span className='new-badge'>New</span>
+        <div className='sec-content'>
+          {newDocuments.map((doc) => (
+            <div 
+              key={doc.id} 
+              className='card'
+            >
+              <div className='card-header'>
+                <div className='course-label' style={{
+                    color: '#16a34a' }}>
+                  <FileText size={16} />
+                  <span>{doc.course}</span>
                 </div>
-                <h3 className='card-title'>{doc.title}</h3>
-                <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>by {doc.author}</p>
-                <div className='card-meta'>
-                  <span>{doc.uploadDate}</span>
-                  <span>{doc.pages} pages</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '14px', color: '#6b7280' }}>
-                    <Download size={12} />
-                    <span>{doc.downloads}</span>
-                  </div>
-                  <button 
-                    className='button small-button secondary-button'
-                  >
-                    View
-                  </button>
-                </div>
+                <span className='new-badge'>New</span>
               </div>
-            ))}
-          </div>
+              <h3 className='card-title'>{doc.title}</h3>
+              <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>by {doc.author}</p>
+              <div className='card-meta'>
+                <span>{doc.uploadDate}</span>
+                <span>{doc.pages} pages</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '14px', color: '#6b7280' }}>
+                  <Download size={12} />
+                  <span>{doc.downloads}</span>
+                </div>
+                <button 
+                  className='button small-button secondary-button'
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </sec>
 
-      {/* Trending Courses Section */}
-      <section className='section'>
-        <div className='section-header'>
-          <div className='section-title'>
+      {/* Trending Courses Sec */}
+      <sec className='sec'>
+        <div className='sec-header'>
+          <div className='sec-title'>
             <TrendingUp size={24} color="#ea580c" />
-            <h2 className='section-title-text'>Trending in Your Courses</h2>
+            <h2 className='sec-title-text'>Trending in Your Courses</h2>
           </div>
-          <ChevronRight size={20} color="#9ca3af" />
+          <ChevronRight className="next-btn" size={20} color="#9ca3af" />
         </div>
-        <div className='section-content'>
-          <div className='grid-large'>
+        <div className='sec-content'>
             {trendingCourses.map((course) => (
               <div 
                 key={course.id} 
@@ -270,8 +258,7 @@ const StudyDashboard = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </sec>
     </div>
   );
 };
