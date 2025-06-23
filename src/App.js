@@ -33,8 +33,7 @@ function LayoutWrapper() {
       <div className={`main-content ${isExpanded ? 'sidebar-expanded' : ''}`}>
         <Outlet />
       </div>
-
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
