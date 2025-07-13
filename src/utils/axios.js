@@ -3,7 +3,7 @@ axios.defaults.withCredentials = true;
 
 export const api = axios.create({
     baseURL: "http://localhost:5000/auth",
-    withCredentials: true,
+    withCredentials: false,
     headers: {
         "Content-Type" : "application/json",
     }
