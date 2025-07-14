@@ -49,12 +49,13 @@ function App() {
         {/* Protected Routes */}
         <Route element={<ProtectedLayout />}>
           <Route element={<LayoutWrapper />}>
-            <Route index element={<Dashboard />} />
-            <Route path="summarize" element={<UploadPage />} />
-            <Route path="noteai" element={<ChatUI />} />
-            <Route path="groups" element={<Dashboard />} />
-            <Route path="QAs" element={<Dashboard />} />
-            <Route path="library" element={<MyLibrary />} />
+            <Route path="/" index element={<Dashboard />} />
+            <Route path="/home" element={<Dashboard />} />
+            <Route path="/summarize" element={<UploadPage />} />
+            <Route path="/noteai" element={<ChatUI />} />
+            <Route path="/groups" element={<Dashboard />} />
+            <Route path="/QAs" element={<Dashboard />} />
+            <Route path="/library" element={<MyLibrary />} />
           </Route>
         </Route>
       </Routes>

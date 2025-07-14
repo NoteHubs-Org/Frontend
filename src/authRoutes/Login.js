@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { login } from '../utils/authAPI';
 import "./auth.css"
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
@@ -16,6 +15,7 @@ const Login = () => {
     const handleChnge = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
+
     };
 
     const handleSubmit = async (e) => {
@@ -27,11 +27,10 @@ const Login = () => {
             const response = await login(form);
             if (response.status === 200) {
                 console.log("Login successful:", response.data);
+                // navigate to the home page or dashboard
                 navigate("/");
-                setIsAuthenticated(true);
             } else {
                 setErrorMessage(response.data.message || "Login failed. Please try again.");
-                setIsAuthenticated(false);
             }
         } catch (error) {
             console.error("Login error", error);
@@ -42,6 +41,7 @@ const Login = () => {
     }
     return (
     <div className="login-container" onSubmit={handleSubmit}>
+        
         <div className="login-header">
             <div className="logo-container">
                 <div className="logo">👥</div>
@@ -76,8 +76,7 @@ const Login = () => {
             <div className='form-status' style={{ display: isLoading || errorMessage ? 'block' : 'none' }}>
                 {isLoading ? (
                     <div className='loader-container'>
-                        <span className='loader'></span>
-                        <span className='loading-text'>Logging in...</span>
+                        <p className='loading-text'>Logging in<span className='loader'></span></p>
                     </div>
                 ) : (
                     errorMessage && (
