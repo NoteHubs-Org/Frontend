@@ -4,6 +4,9 @@ import "./auth.css"
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
@@ -17,21 +20,24 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        setErrorMessage("");
         
         try {
             const response = await login(form);
             if (response.status === 200) {
-                console.log("Login successful", response.data);
-                alert("Login successful");
-                navigate("/"); // Redirect to dashboard or home page
-                <Navigate to="/library" />
+                console.log("Login successful:", response.data);
+                navigate("/");
+                setIsAuthenticated(true);
             } else {
-                console.error("Login failed", response.data);
-                alert("Login failed. Please check your credentials and try again.");
+                setErrorMessage(response.data.message || "Login failed. Please try again.");
+                setIsAuthenticated(false);
             }
         } catch (error) {
-           console.error("Login error", error);
-           alert("Logging in failed. Please try again");
+            console.error("Login error", error);
+            setErrorMessage("Logging in failed. Please try again");
+        } finally {
+            setIsLoading(false);
         }
     }
     return (
@@ -65,6 +71,22 @@ const Login = () => {
                     <label className="checkbox-label" for="rememberCheckbox">Remember me</label>
                 </div>
                 <a href='/forgot-password' className="forgot-link">Forgot Password?</a>
+            </div>
+            
+            <div className='form-status' style={{ display: isLoading || errorMessage ? 'block' : 'none' }}>
+                {isLoading ? (
+                    <div className='loader-container'>
+                        <span className='loader'></span>
+                        <span className='loading-text'>Logging in...</span>
+                    </div>
+                ) : (
+                    errorMessage && (
+                        <div className='error-container'>
+                            <span className='error-icon'>⚠️</span>
+                            <span className='error-message'>{errorMessage}</span>
+                        </div>
+                    )
+                )}
             </div>
             
             <button type="submit" className="login-btn">Sign In</button>
