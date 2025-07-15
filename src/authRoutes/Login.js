@@ -76,7 +76,7 @@ const Login = () => {
             <div className='form-status' style={{ display: isLoading || errorMessage ? 'block' : 'none' }}>
                 {isLoading ? (
                     <div className='loader-container'>
-                        <p className='loading-text'>Logging in<span className='loader'></span></p>
+                        <span className='loader'></span>
                     </div>
                 ) : (
                     errorMessage && (

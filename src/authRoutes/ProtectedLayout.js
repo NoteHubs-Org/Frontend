@@ -9,7 +9,7 @@ const ProtectedLayout = () => {
   if (loading) {
     // spinner here
     return (<div className="loader-container">
-      <span className="loader"></span>
+      <span className="loader2"></span>
     </div>);
   };
   if (!user) return navigate("/auth/login");
