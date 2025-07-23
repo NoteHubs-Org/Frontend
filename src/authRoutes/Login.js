@@ -24,21 +24,20 @@ const Login = () => {
         setErrorMessage("");
         
         try {
-            const response = await login(form);
-            if (response.status === 200) {
-                console.log("Login successful:", response.data);
-                // navigate to the home page or dashboard
+            const res = await login(form);
+            console.log("Login response:", res);
+            if (res && res.status === 200) {
                 navigate("/");
-            } else {
-                setErrorMessage(response.data.message || "Login failed. Please try again.");
-            }
+            } else if (res && res.data) {
+                setErrorMessage(res.data.message || "Login failed. Please try again.");
+            };
+            setIsLoading(false);
         } catch (error) {
-            console.error("Login error", error);
-            setErrorMessage("Logging in failed. Please try again");
-        } finally {
+            console.error("Login error:", error);
+            setErrorMessage(error.response?.data?.message || "An error occurred during login.");
             setIsLoading(false);
         }
-    }
+    };
     return (
     <div className="login-container" onSubmit={handleSubmit}>
         
@@ -90,7 +89,7 @@ const Login = () => {
             
             <button type="submit" className="login-btn">Sign In</button>
             <div className="signup-link">
-                Don't have an account? <a href="/signup" id="signupLink">Sign up here</a>
+                Don't have an account? <a href="/auth/signup" id="signupLink">Sign up here</a>
             </div>
 
             {/* <div className="divider">
