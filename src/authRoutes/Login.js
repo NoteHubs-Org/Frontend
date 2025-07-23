@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { login } from '../utils/authAPI';
 import "./auth.css"
 import {  useNavigate } from 'react-router-dom';
+import { useAuth } from './authContext';
 
 const Login = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { setUser } = useAuth();
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -25,16 +27,17 @@ const Login = () => {
         
         try {
             const res = await login(form);
-            console.log("Login response:", res);
             if (res && res.status === 200) {
+                setUser(res.data.user);
                 navigate("/");
             } else if (res && res.data) {
                 setErrorMessage(res.data.message || "Login failed. Please try again.");
             };
             setIsLoading(false);
         } catch (error) {
-            console.error("Login error:", error);
             setErrorMessage(error.response?.data?.message || "An error occurred during login.");
+            setIsLoading(false);
+        } finally {
             setIsLoading(false);
         }
     };

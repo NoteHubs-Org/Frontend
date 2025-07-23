@@ -13,6 +13,7 @@ import ChatUI from "./pages/chatAIPage/AIChat";
 import AuthRoutes from "./authRoutes/AuthRoutes";
 import { AuthProvider } from "./authRoutes/authContext";
 import ProtectedLayout from "./authRoutes/ProtectedLayout";
+import { useAuth } from "./authRoutes/authContext";
 
 function LayoutWrapper() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,6 +40,14 @@ function LayoutWrapper() {
 }
 
 function App() {
+  const { loading } = useAuth();
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <span className="loader2"></span>
+      </div>
+    );
+  }
 
   return (
     <AuthProvider>
